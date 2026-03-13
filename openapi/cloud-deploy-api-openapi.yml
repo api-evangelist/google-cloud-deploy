@@ -1,0 +1,576 @@
+openapi: 3.1.0
+info:
+  title: Google Cloud Deploy API
+  description: >-
+    The Cloud Deploy API provides programmatic access to manage delivery
+    pipelines, targets, releases, and rollouts for continuous delivery
+    workflows on Google Cloud. It supports promoting releases through
+    target environments with approval gates and rollback capabilities.
+  version: v1
+  contact:
+    name: Google Cloud Support
+    url: https://cloud.google.com/deploy/docs/support
+  termsOfService: https://cloud.google.com/terms
+externalDocs:
+  description: Cloud Deploy API Documentation
+  url: https://cloud.google.com/deploy/docs/api/reference/rest
+servers:
+  - url: https://clouddeploy.googleapis.com/v1
+    description: Production Server
+tags:
+  - name: DeliveryPipelines
+    description: Operations for managing delivery pipelines
+  - name: Targets
+    description: Operations for managing deployment targets
+  - name: Releases
+    description: Operations for managing releases
+  - name: Rollouts
+    description: Operations for managing rollouts
+security:
+  - oauth2: []
+paths:
+  /projects/{projectId}/locations/{location}/deliveryPipelines:
+    get:
+      operationId: listDeliveryPipelines
+      summary: List delivery pipelines
+      description: Lists delivery pipelines in a given project and location.
+      tags:
+        - DeliveryPipelines
+      parameters:
+        - $ref: '#/components/parameters/projectId'
+        - $ref: '#/components/parameters/location'
+        - $ref: '#/components/parameters/pageSize'
+        - $ref: '#/components/parameters/pageToken'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListDeliveryPipelinesResponse'
+    post:
+      operationId: createDeliveryPipeline
+      summary: Create a delivery pipeline
+      description: Creates a new delivery pipeline.
+      tags:
+        - DeliveryPipelines
+      parameters:
+        - $ref: '#/components/parameters/projectId'
+        - $ref: '#/components/parameters/location'
+        - name: deliveryPipelineId
+          in: query
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeliveryPipeline'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Operation'
+  /projects/{projectId}/locations/{location}/deliveryPipelines/{pipelineId}:
+    get:
+      operationId: getDeliveryPipeline
+      summary: Get a delivery pipeline
+      description: Gets details of a single delivery pipeline.
+      tags:
+        - DeliveryPipelines
+      parameters:
+        - $ref: '#/components/parameters/projectId'
+        - $ref: '#/components/parameters/location'
+        - $ref: '#/components/parameters/pipelineId'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeliveryPipeline'
+    patch:
+      operationId: updateDeliveryPipeline
+      summary: Update a delivery pipeline
+      description: Updates the parameters of a single delivery pipeline.
+      tags:
+        - DeliveryPipelines
+      parameters:
+        - $ref: '#/components/parameters/projectId'
+        - $ref: '#/components/parameters/location'
+        - $ref: '#/components/parameters/pipelineId'
+        - name: updateMask
+          in: query
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeliveryPipeline'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Operation'
+    delete:
+      operationId: deleteDeliveryPipeline
+      summary: Delete a delivery pipeline
+      description: Deletes a single delivery pipeline.
+      tags:
+        - DeliveryPipelines
+      parameters:
+        - $ref: '#/components/parameters/projectId'
+        - $ref: '#/components/parameters/location'
+        - $ref: '#/components/parameters/pipelineId'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Operation'
+  /projects/{projectId}/locations/{location}/targets:
+    get:
+      operationId: listTargets
+      summary: List targets
+      description: Lists targets in a given project and location.
+      tags:
+        - Targets
+      parameters:
+        - $ref: '#/components/parameters/projectId'
+        - $ref: '#/components/parameters/location'
+        - $ref: '#/components/parameters/pageSize'
+        - $ref: '#/components/parameters/pageToken'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListTargetsResponse'
+    post:
+      operationId: createTarget
+      summary: Create a target
+      description: Creates a new target in a given project and location.
+      tags:
+        - Targets
+      parameters:
+        - $ref: '#/components/parameters/projectId'
+        - $ref: '#/components/parameters/location'
+        - name: targetId
+          in: query
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Target'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Operation'
+  /projects/{projectId}/locations/{location}/deliveryPipelines/{pipelineId}/releases:
+    get:
+      operationId: listReleases
+      summary: List releases
+      description: Lists releases in a given delivery pipeline.
+      tags:
+        - Releases
+      parameters:
+        - $ref: '#/components/parameters/projectId'
+        - $ref: '#/components/parameters/location'
+        - $ref: '#/components/parameters/pipelineId'
+        - $ref: '#/components/parameters/pageSize'
+        - $ref: '#/components/parameters/pageToken'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListReleasesResponse'
+    post:
+      operationId: createRelease
+      summary: Create a release
+      description: Creates a new release in a given delivery pipeline.
+      tags:
+        - Releases
+      parameters:
+        - $ref: '#/components/parameters/projectId'
+        - $ref: '#/components/parameters/location'
+        - $ref: '#/components/parameters/pipelineId'
+        - name: releaseId
+          in: query
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Release'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Operation'
+  /projects/{projectId}/locations/{location}/deliveryPipelines/{pipelineId}/releases/{releaseId}/rollouts:
+    get:
+      operationId: listRollouts
+      summary: List rollouts
+      description: Lists rollouts in a given release.
+      tags:
+        - Rollouts
+      parameters:
+        - $ref: '#/components/parameters/projectId'
+        - $ref: '#/components/parameters/location'
+        - $ref: '#/components/parameters/pipelineId'
+        - $ref: '#/components/parameters/releaseId'
+        - $ref: '#/components/parameters/pageSize'
+        - $ref: '#/components/parameters/pageToken'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListRolloutsResponse'
+    post:
+      operationId: createRollout
+      summary: Create a rollout
+      description: Creates a new rollout in a given release.
+      tags:
+        - Rollouts
+      parameters:
+        - $ref: '#/components/parameters/projectId'
+        - $ref: '#/components/parameters/location'
+        - $ref: '#/components/parameters/pipelineId'
+        - $ref: '#/components/parameters/releaseId'
+        - name: rolloutId
+          in: query
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Rollout'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Operation'
+  /projects/{projectId}/locations/{location}/deliveryPipelines/{pipelineId}/releases/{releaseId}/rollouts/{rolloutId}:approve:
+    post:
+      operationId: approveRollout
+      summary: Approve a rollout
+      description: Approves a rollout that requires approval.
+      tags:
+        - Rollouts
+      parameters:
+        - $ref: '#/components/parameters/projectId'
+        - $ref: '#/components/parameters/location'
+        - $ref: '#/components/parameters/pipelineId'
+        - $ref: '#/components/parameters/releaseId'
+        - name: rolloutId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                approved:
+                  type: boolean
+      responses:
+        '200':
+          description: Successful response
+components:
+  parameters:
+    projectId:
+      name: projectId
+      in: path
+      required: true
+      schema:
+        type: string
+    location:
+      name: location
+      in: path
+      required: true
+      schema:
+        type: string
+    pipelineId:
+      name: pipelineId
+      in: path
+      required: true
+      schema:
+        type: string
+    releaseId:
+      name: releaseId
+      in: path
+      required: true
+      schema:
+        type: string
+    pageSize:
+      name: pageSize
+      in: query
+      schema:
+        type: integer
+    pageToken:
+      name: pageToken
+      in: query
+      schema:
+        type: string
+  schemas:
+    DeliveryPipeline:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The resource name of the delivery pipeline
+        description:
+          type: string
+        annotations:
+          type: object
+          additionalProperties:
+            type: string
+        labels:
+          type: object
+          additionalProperties:
+            type: string
+        serialPipeline:
+          type: object
+          description: Serial pipeline definition
+          properties:
+            stages:
+              type: array
+              items:
+                $ref: '#/components/schemas/Stage'
+        condition:
+          type: object
+          properties:
+            pipelineReadyCondition:
+              type: object
+              properties:
+                status:
+                  type: boolean
+            targetsPresentCondition:
+              type: object
+              properties:
+                status:
+                  type: boolean
+                missingTargets:
+                  type: array
+                  items:
+                    type: string
+        createTime:
+          type: string
+          format: date-time
+        updateTime:
+          type: string
+          format: date-time
+    Stage:
+      type: object
+      properties:
+        targetId:
+          type: string
+          description: The target ID for this stage
+        profiles:
+          type: array
+          items:
+            type: string
+          description: Skaffold profiles to use during rendering
+        strategy:
+          type: object
+          properties:
+            standard:
+              type: object
+              properties:
+                verify:
+                  type: boolean
+            canary:
+              type: object
+              properties:
+                percentages:
+                  type: array
+                  items:
+                    type: integer
+                verify:
+                  type: boolean
+    Target:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        annotations:
+          type: object
+          additionalProperties:
+            type: string
+        labels:
+          type: object
+          additionalProperties:
+            type: string
+        requireApproval:
+          type: boolean
+          description: Whether this target requires approval before deployment
+        gke:
+          type: object
+          description: GKE target configuration
+          properties:
+            cluster:
+              type: string
+              description: Resource name of the GKE cluster
+            internalIp:
+              type: boolean
+        run:
+          type: object
+          description: Cloud Run target configuration
+          properties:
+            location:
+              type: string
+              description: The Cloud Run location
+        createTime:
+          type: string
+          format: date-time
+        updateTime:
+          type: string
+          format: date-time
+    Release:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        annotations:
+          type: object
+          additionalProperties:
+            type: string
+        labels:
+          type: object
+          additionalProperties:
+            type: string
+        skaffoldConfigUri:
+          type: string
+          description: Cloud Storage URI of the Skaffold config
+        skaffoldConfigPath:
+          type: string
+          description: Path of the Skaffold config inside the config URI
+        buildArtifacts:
+          type: array
+          items:
+            type: object
+            properties:
+              image:
+                type: string
+              tag:
+                type: string
+        renderState:
+          type: string
+          enum: [SUCCEEDED, FAILED, IN_PROGRESS]
+        createTime:
+          type: string
+          format: date-time
+    Rollout:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        targetId:
+          type: string
+        approvalState:
+          type: string
+          enum: [NEEDS_APPROVAL, DOES_NOT_NEED_APPROVAL, APPROVED, REJECTED]
+        state:
+          type: string
+          enum: [SUCCEEDED, FAILED, IN_PROGRESS, PENDING_APPROVAL, APPROVAL_REJECTED, PENDING, PENDING_RELEASE, CANCELLING, CANCELLED, HALTED]
+        deployStartTime:
+          type: string
+          format: date-time
+        deployEndTime:
+          type: string
+          format: date-time
+        createTime:
+          type: string
+          format: date-time
+    Operation:
+      type: object
+      properties:
+        name:
+          type: string
+        done:
+          type: boolean
+    ListDeliveryPipelinesResponse:
+      type: object
+      properties:
+        deliveryPipelines:
+          type: array
+          items:
+            $ref: '#/components/schemas/DeliveryPipeline'
+        nextPageToken:
+          type: string
+    ListTargetsResponse:
+      type: object
+      properties:
+        targets:
+          type: array
+          items:
+            $ref: '#/components/schemas/Target'
+        nextPageToken:
+          type: string
+    ListReleasesResponse:
+      type: object
+      properties:
+        releases:
+          type: array
+          items:
+            $ref: '#/components/schemas/Release'
+        nextPageToken:
+          type: string
+    ListRolloutsResponse:
+      type: object
+      properties:
+        rollouts:
+          type: array
+          items:
+            $ref: '#/components/schemas/Rollout'
+        nextPageToken:
+          type: string
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://accounts.google.com/o/oauth2/auth
+          tokenUrl: https://oauth2.googleapis.com/token
+          scopes:
+            https://www.googleapis.com/auth/cloud-platform: Full access to Google Cloud

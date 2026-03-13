@@ -1,0 +1,139 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cloud.google.com/schemas/clouddeploy/release.json",
+  "title": "Google Cloud Deploy Release",
+  "description": "Schema for a Cloud Deploy release, representing a specific version of an application to be deployed through a delivery pipeline.",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The resource name of the release"
+    },
+    "description": {
+      "type": "string",
+      "description": "Description of the release"
+    },
+    "annotations": {
+      "type": "object",
+      "description": "User annotations for the release",
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "labels": {
+      "type": "object",
+      "description": "Labels applied to the release",
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "skaffoldConfigUri": {
+      "type": "string",
+      "description": "Cloud Storage URI of the Skaffold configuration"
+    },
+    "skaffoldConfigPath": {
+      "type": "string",
+      "description": "Filepath of the Skaffold config inside the config URI"
+    },
+    "buildArtifacts": {
+      "type": "array",
+      "description": "List of build artifacts to deploy",
+      "items": {
+        "$ref": "#/$defs/BuildArtifact"
+      }
+    },
+    "deliveryPipelineSnapshot": {
+      "$ref": "#/$defs/DeliveryPipelineSnapshot",
+      "description": "Snapshot of the delivery pipeline at the time of release creation"
+    },
+    "targetSnapshots": {
+      "type": "array",
+      "description": "Snapshots of targets at the time of release creation",
+      "items": {
+        "$ref": "#/$defs/TargetSnapshot"
+      }
+    },
+    "renderState": {
+      "type": "string",
+      "description": "The current state of the render operation",
+      "enum": ["SUCCEEDED", "FAILED", "IN_PROGRESS"]
+    },
+    "createTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Time at which the release was created"
+    },
+    "renderStartTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Time at which the render began"
+    },
+    "renderEndTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Time at which the render completed"
+    }
+  },
+  "$defs": {
+    "BuildArtifact": {
+      "type": "object",
+      "description": "A build artifact with image and tag",
+      "properties": {
+        "image": {
+          "type": "string",
+          "description": "The container image name"
+        },
+        "tag": {
+          "type": "string",
+          "description": "The container image tag or digest"
+        }
+      }
+    },
+    "DeliveryPipelineSnapshot": {
+      "type": "object",
+      "description": "Snapshot of a delivery pipeline",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "serialPipeline": {
+          "type": "object",
+          "properties": {
+            "stages": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "targetId": {
+                    "type": "string"
+                  },
+                  "profiles": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "TargetSnapshot": {
+      "type": "object",
+      "description": "Snapshot of a deployment target",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "targetId": {
+          "type": "string"
+        },
+        "requireApproval": {
+          "type": "boolean"
+        }
+      }
+    }
+  }
+}

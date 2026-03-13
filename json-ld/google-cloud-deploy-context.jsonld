@@ -1,0 +1,85 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "cd": "https://cloud.google.com/deploy/ns/",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "dcterms": "http://purl.org/dc/terms/",
+
+    "DeliveryPipeline": {
+      "@id": "cd:DeliveryPipeline",
+      "@context": {
+        "name": "cd:pipelineName",
+        "description": "schema:description",
+        "serialPipeline": "cd:serialPipeline",
+        "labels": "cd:labels",
+        "annotations": "cd:annotations",
+        "createTime": {
+          "@id": "dcterms:created",
+          "@type": "xsd:dateTime"
+        },
+        "updateTime": {
+          "@id": "dcterms:modified",
+          "@type": "xsd:dateTime"
+        }
+      }
+    },
+
+    "Target": {
+      "@id": "cd:Target",
+      "@context": {
+        "name": "cd:targetName",
+        "description": "schema:description",
+        "requireApproval": "cd:requireApproval",
+        "gke": "cd:gkeTarget",
+        "run": "cd:runTarget",
+        "createTime": {
+          "@id": "dcterms:created",
+          "@type": "xsd:dateTime"
+        },
+        "updateTime": {
+          "@id": "dcterms:modified",
+          "@type": "xsd:dateTime"
+        }
+      }
+    },
+
+    "Release": {
+      "@id": "cd:Release",
+      "@context": {
+        "name": "cd:releaseName",
+        "description": "schema:description",
+        "skaffoldConfigUri": "cd:skaffoldConfigUri",
+        "buildArtifacts": "cd:buildArtifacts",
+        "renderState": "cd:renderState",
+        "createTime": {
+          "@id": "dcterms:created",
+          "@type": "xsd:dateTime"
+        }
+      }
+    },
+
+    "Rollout": {
+      "@id": "cd:Rollout",
+      "@context": {
+        "name": "cd:rolloutName",
+        "description": "schema:description",
+        "targetId": "cd:targetId",
+        "approvalState": "cd:approvalState",
+        "state": "cd:rolloutState",
+        "deployStartTime": {
+          "@id": "cd:deployStartTime",
+          "@type": "xsd:dateTime"
+        },
+        "deployEndTime": {
+          "@id": "cd:deployEndTime",
+          "@type": "xsd:dateTime"
+        },
+        "createTime": {
+          "@id": "dcterms:created",
+          "@type": "xsd:dateTime"
+        }
+      }
+    }
+  }
+}
