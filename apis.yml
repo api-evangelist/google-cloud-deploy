@@ -1,3 +1,4 @@
+aid: google-cloud-deploy
 name: Google Cloud Deploy
 description: >-
   Google Cloud Deploy is a managed continuous delivery service that automates
@@ -9,8 +10,9 @@ description: >-
 image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 url: https://raw.githubusercontent.com/api-evangelist/google-cloud-deploy/refs/heads/main/apis.yml
 created: '2026-03-13'
-modified: '2026-03-13'
-specificationVersion: '0.18'
+modified: '2026-03-16'
+specificationVersion: '0.19'
+type: Index
 tags:
 - Continuous Delivery
 - Deployment
@@ -40,23 +42,33 @@ apis:
     url: https://cloud.google.com/deploy/docs/api/reference/rest
   - type: OpenAPI
     url: openapi/cloud-deploy-api-openapi.yml
+  - type: Authentication
+    url: https://cloud.google.com/deploy/docs/api/reference/rest#authentication
   - type: JSONSchema
     url: json-schema/google-cloud-deploy-release-schema.json
 common:
-- type: GettingStarted
+- type: Portal
+  url: https://cloud.google.com/deploy
+- type: Getting Started
   url: https://cloud.google.com/deploy/docs/quickstart
-- type: Pricing
-  url: https://cloud.google.com/deploy/pricing
+- type: Documentation
+  url: https://cloud.google.com/deploy/docs
 - type: Authentication
   url: https://cloud.google.com/deploy/docs/api/reference/rest#authentication
+- type: Pricing
+  url: https://cloud.google.com/deploy/pricing
+- type: Terms of Service
+  url: https://cloud.google.com/terms
+- type: Privacy Policy
+  url: https://policies.google.com/privacy
 - type: Console
   url: https://console.cloud.google.com/deploy
 - type: CLI
   url: https://cloud.google.com/sdk/gcloud/reference/deploy
-- type: Support
-  url: https://cloud.google.com/deploy/docs/support
 - type: Status
   url: https://status.cloud.google.com
+- type: Support
+  url: https://cloud.google.com/deploy/docs/support
 - type: JSON-LD
   url: json-ld/google-cloud-deploy-context.jsonld
 maintainers:
