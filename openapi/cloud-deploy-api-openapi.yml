@@ -32,7 +32,7 @@ paths:
   /projects/{projectId}/locations/{location}/deliveryPipelines:
     get:
       operationId: listDeliveryPipelines
-      summary: List delivery pipelines
+      summary: Google Cloud Deploy List delivery pipelines
       description: Lists delivery pipelines in a given project and location.
       tags:
         - DeliveryPipelines
@@ -50,7 +50,7 @@ paths:
                 $ref: '#/components/schemas/ListDeliveryPipelinesResponse'
     post:
       operationId: createDeliveryPipeline
-      summary: Create a delivery pipeline
+      summary: Google Cloud Deploy Create a delivery pipeline
       description: Creates a new delivery pipeline.
       tags:
         - DeliveryPipelines
@@ -78,7 +78,7 @@ paths:
   /projects/{projectId}/locations/{location}/deliveryPipelines/{pipelineId}:
     get:
       operationId: getDeliveryPipeline
-      summary: Get a delivery pipeline
+      summary: Google Cloud Deploy Get a delivery pipeline
       description: Gets details of a single delivery pipeline.
       tags:
         - DeliveryPipelines
@@ -95,7 +95,7 @@ paths:
                 $ref: '#/components/schemas/DeliveryPipeline'
     patch:
       operationId: updateDeliveryPipeline
-      summary: Update a delivery pipeline
+      summary: Google Cloud Deploy Update a delivery pipeline
       description: Updates the parameters of a single delivery pipeline.
       tags:
         - DeliveryPipelines
@@ -122,7 +122,7 @@ paths:
                 $ref: '#/components/schemas/Operation'
     delete:
       operationId: deleteDeliveryPipeline
-      summary: Delete a delivery pipeline
+      summary: Google Cloud Deploy Delete a delivery pipeline
       description: Deletes a single delivery pipeline.
       tags:
         - DeliveryPipelines
@@ -140,7 +140,7 @@ paths:
   /projects/{projectId}/locations/{location}/targets:
     get:
       operationId: listTargets
-      summary: List targets
+      summary: Google Cloud Deploy List targets
       description: Lists targets in a given project and location.
       tags:
         - Targets
@@ -158,7 +158,7 @@ paths:
                 $ref: '#/components/schemas/ListTargetsResponse'
     post:
       operationId: createTarget
-      summary: Create a target
+      summary: Google Cloud Deploy Create a target
       description: Creates a new target in a given project and location.
       tags:
         - Targets
@@ -186,7 +186,7 @@ paths:
   /projects/{projectId}/locations/{location}/deliveryPipelines/{pipelineId}/releases:
     get:
       operationId: listReleases
-      summary: List releases
+      summary: Google Cloud Deploy List releases
       description: Lists releases in a given delivery pipeline.
       tags:
         - Releases
@@ -205,7 +205,7 @@ paths:
                 $ref: '#/components/schemas/ListReleasesResponse'
     post:
       operationId: createRelease
-      summary: Create a release
+      summary: Google Cloud Deploy Create a release
       description: Creates a new release in a given delivery pipeline.
       tags:
         - Releases
@@ -234,7 +234,7 @@ paths:
   /projects/{projectId}/locations/{location}/deliveryPipelines/{pipelineId}/releases/{releaseId}/rollouts:
     get:
       operationId: listRollouts
-      summary: List rollouts
+      summary: Google Cloud Deploy List rollouts
       description: Lists rollouts in a given release.
       tags:
         - Rollouts
@@ -254,7 +254,7 @@ paths:
                 $ref: '#/components/schemas/ListRolloutsResponse'
     post:
       operationId: createRollout
-      summary: Create a rollout
+      summary: Google Cloud Deploy Create a rollout
       description: Creates a new rollout in a given release.
       tags:
         - Rollouts
@@ -281,10 +281,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Operation'
-  /projects/{projectId}/locations/{location}/deliveryPipelines/{pipelineId}/releases/{releaseId}/rollouts/{rolloutId}:approve:
-    post:
+  ? /projects/{projectId}/locations/{location}/deliveryPipelines/{pipelineId}/releases/{releaseId}/rollouts/{rolloutId}:approve
+  : post:
       operationId: approveRollout
-      summary: Approve a rollout
+      summary: Google Cloud Deploy Approve a rollout
       description: Approves a rollout that requires approval.
       tags:
         - Rollouts
