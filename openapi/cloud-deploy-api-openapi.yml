@@ -20,12 +20,12 @@ servers:
 tags:
   - name: DeliveryPipelines
     description: Operations for managing delivery pipelines
-  - name: Targets
-    description: Operations for managing deployment targets
   - name: Releases
     description: Operations for managing releases
   - name: Rollouts
     description: Operations for managing rollouts
+  - name: Targets
+    description: Operations for managing deployment targets
 security:
   - oauth2: []
 paths:
