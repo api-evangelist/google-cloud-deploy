@@ -1,0 +1,465 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Google Cloud Deploy API
+  description: The Cloud Deploy API provides programmatic access to manage delivery pipelines, targets, releases, and rollouts
+    for continuous delivery workflows on Google Cloud. It supports promoting releases through target environments with approval
+    gates and rollback capabilities.
+  tags:
+  - Google
+  - Cloud
+  - Deploy
+  - API
+  created: '2026-05-06'
+  modified: '2026-05-06'
+capability:
+  consumes:
+  - type: http
+    namespace: google-cloud-deploy
+    baseUri: https://clouddeploy.googleapis.com/v1
+    description: Google Cloud Deploy API HTTP API.
+    authentication:
+      type: bearer
+      token: '{{GOOGLE_CLOUD_DEPLOY_TOKEN}}'
+    resources:
+    - name: projects-projectid-locations-location-deliverypi
+      path: /projects/{projectId}/locations/{location}/deliveryPipelines
+      operations:
+      - name: listdeliverypipelines
+        method: GET
+        description: Google Cloud Deploy List delivery pipelines
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createdeliverypipeline
+        method: POST
+        description: Google Cloud Deploy Create a delivery pipeline
+        inputParameters:
+        - name: deliveryPipelineId
+          in: query
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: projects-projectid-locations-location-deliverypi
+      path: /projects/{projectId}/locations/{location}/deliveryPipelines/{pipelineId}
+      operations:
+      - name: getdeliverypipeline
+        method: GET
+        description: Google Cloud Deploy Get a delivery pipeline
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updatedeliverypipeline
+        method: PATCH
+        description: Google Cloud Deploy Update a delivery pipeline
+        inputParameters:
+        - name: updateMask
+          in: query
+          type: string
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: deletedeliverypipeline
+        method: DELETE
+        description: Google Cloud Deploy Delete a delivery pipeline
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: projects-projectid-locations-location-targets
+      path: /projects/{projectId}/locations/{location}/targets
+      operations:
+      - name: listtargets
+        method: GET
+        description: Google Cloud Deploy List targets
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createtarget
+        method: POST
+        description: Google Cloud Deploy Create a target
+        inputParameters:
+        - name: targetId
+          in: query
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: projects-projectid-locations-location-deliverypi
+      path: /projects/{projectId}/locations/{location}/deliveryPipelines/{pipelineId}/releases
+      operations:
+      - name: listreleases
+        method: GET
+        description: Google Cloud Deploy List releases
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createrelease
+        method: POST
+        description: Google Cloud Deploy Create a release
+        inputParameters:
+        - name: releaseId
+          in: query
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: projects-projectid-locations-location-deliverypi
+      path: /projects/{projectId}/locations/{location}/deliveryPipelines/{pipelineId}/releases/{releaseId}/rollouts
+      operations:
+      - name: listrollouts
+        method: GET
+        description: Google Cloud Deploy List rollouts
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createrollout
+        method: POST
+        description: Google Cloud Deploy Create a rollout
+        inputParameters:
+        - name: rolloutId
+          in: query
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: projects-projectid-locations-location-deliverypi
+      path: /projects/{projectId}/locations/{location}/deliveryPipelines/{pipelineId}/releases/{releaseId}/rollouts/{rolloutId}:approve
+      operations:
+      - name: approverollout
+        method: POST
+        description: Google Cloud Deploy Approve a rollout
+        inputParameters:
+        - name: rolloutId
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    port: 8080
+    namespace: google-cloud-deploy-rest
+    description: REST adapter for Google Cloud Deploy API.
+    resources:
+    - path: /projects/{projectId}/locations/{location}/deliveryPipelines
+      name: listdeliverypipelines
+      operations:
+      - method: GET
+        name: listdeliverypipelines
+        description: Google Cloud Deploy List delivery pipelines
+        call: google-cloud-deploy.listdeliverypipelines
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /projects/{projectId}/locations/{location}/deliveryPipelines
+      name: createdeliverypipeline
+      operations:
+      - method: POST
+        name: createdeliverypipeline
+        description: Google Cloud Deploy Create a delivery pipeline
+        call: google-cloud-deploy.createdeliverypipeline
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /projects/{projectId}/locations/{location}/deliveryPipelines/{pipelineId}
+      name: getdeliverypipeline
+      operations:
+      - method: GET
+        name: getdeliverypipeline
+        description: Google Cloud Deploy Get a delivery pipeline
+        call: google-cloud-deploy.getdeliverypipeline
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /projects/{projectId}/locations/{location}/deliveryPipelines/{pipelineId}
+      name: updatedeliverypipeline
+      operations:
+      - method: PATCH
+        name: updatedeliverypipeline
+        description: Google Cloud Deploy Update a delivery pipeline
+        call: google-cloud-deploy.updatedeliverypipeline
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /projects/{projectId}/locations/{location}/deliveryPipelines/{pipelineId}
+      name: deletedeliverypipeline
+      operations:
+      - method: DELETE
+        name: deletedeliverypipeline
+        description: Google Cloud Deploy Delete a delivery pipeline
+        call: google-cloud-deploy.deletedeliverypipeline
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /projects/{projectId}/locations/{location}/targets
+      name: listtargets
+      operations:
+      - method: GET
+        name: listtargets
+        description: Google Cloud Deploy List targets
+        call: google-cloud-deploy.listtargets
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /projects/{projectId}/locations/{location}/targets
+      name: createtarget
+      operations:
+      - method: POST
+        name: createtarget
+        description: Google Cloud Deploy Create a target
+        call: google-cloud-deploy.createtarget
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /projects/{projectId}/locations/{location}/deliveryPipelines/{pipelineId}/releases
+      name: listreleases
+      operations:
+      - method: GET
+        name: listreleases
+        description: Google Cloud Deploy List releases
+        call: google-cloud-deploy.listreleases
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /projects/{projectId}/locations/{location}/deliveryPipelines/{pipelineId}/releases
+      name: createrelease
+      operations:
+      - method: POST
+        name: createrelease
+        description: Google Cloud Deploy Create a release
+        call: google-cloud-deploy.createrelease
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /projects/{projectId}/locations/{location}/deliveryPipelines/{pipelineId}/releases/{releaseId}/rollouts
+      name: listrollouts
+      operations:
+      - method: GET
+        name: listrollouts
+        description: Google Cloud Deploy List rollouts
+        call: google-cloud-deploy.listrollouts
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /projects/{projectId}/locations/{location}/deliveryPipelines/{pipelineId}/releases/{releaseId}/rollouts
+      name: createrollout
+      operations:
+      - method: POST
+        name: createrollout
+        description: Google Cloud Deploy Create a rollout
+        call: google-cloud-deploy.createrollout
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /projects/{projectId}/locations/{location}/deliveryPipelines/{pipelineId}/releases/{releaseId}/rollouts/{rolloutId}:approve
+      name: approverollout
+      operations:
+      - method: POST
+        name: approverollout
+        description: Google Cloud Deploy Approve a rollout
+        call: google-cloud-deploy.approverollout
+        with:
+          rolloutId: rest.rolloutId
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    port: 9090
+    namespace: google-cloud-deploy-mcp
+    transport: http
+    description: MCP adapter for Google Cloud Deploy API for AI agent use.
+    tools:
+    - name: listdeliverypipelines
+      description: Google Cloud Deploy List delivery pipelines
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: google-cloud-deploy.listdeliverypipelines
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: createdeliverypipeline
+      description: Google Cloud Deploy Create a delivery pipeline
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: google-cloud-deploy.createdeliverypipeline
+      with:
+        deliveryPipelineId: tools.deliveryPipelineId
+      inputParameters:
+      - name: deliveryPipelineId
+        type: string
+        description: deliveryPipelineId
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getdeliverypipeline
+      description: Google Cloud Deploy Get a delivery pipeline
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: google-cloud-deploy.getdeliverypipeline
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: updatedeliverypipeline
+      description: Google Cloud Deploy Update a delivery pipeline
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: google-cloud-deploy.updatedeliverypipeline
+      with:
+        updateMask: tools.updateMask
+      inputParameters:
+      - name: updateMask
+        type: string
+        description: updateMask
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: deletedeliverypipeline
+      description: Google Cloud Deploy Delete a delivery pipeline
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: google-cloud-deploy.deletedeliverypipeline
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listtargets
+      description: Google Cloud Deploy List targets
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: google-cloud-deploy.listtargets
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: createtarget
+      description: Google Cloud Deploy Create a target
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: google-cloud-deploy.createtarget
+      with:
+        targetId: tools.targetId
+      inputParameters:
+      - name: targetId
+        type: string
+        description: targetId
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listreleases
+      description: Google Cloud Deploy List releases
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: google-cloud-deploy.listreleases
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: createrelease
+      description: Google Cloud Deploy Create a release
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: google-cloud-deploy.createrelease
+      with:
+        releaseId: tools.releaseId
+      inputParameters:
+      - name: releaseId
+        type: string
+        description: releaseId
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listrollouts
+      description: Google Cloud Deploy List rollouts
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: google-cloud-deploy.listrollouts
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: createrollout
+      description: Google Cloud Deploy Create a rollout
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: google-cloud-deploy.createrollout
+      with:
+        rolloutId: tools.rolloutId
+      inputParameters:
+      - name: rolloutId
+        type: string
+        description: rolloutId
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: approverollout
+      description: Google Cloud Deploy Approve a rollout
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: google-cloud-deploy.approverollout
+      with:
+        rolloutId: tools.rolloutId
+      inputParameters:
+      - name: rolloutId
+        type: string
+        description: rolloutId
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+binds:
+- namespace: env
+  keys:
+    GOOGLE_CLOUD_DEPLOY_TOKEN: GOOGLE_CLOUD_DEPLOY_TOKEN
