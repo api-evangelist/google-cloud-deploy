@@ -49,7 +49,7 @@ apis:
 common:
   - type: Portal
     url: https://cloud.google.com/deploy
-  - type: Getting Started
+  - type: GettingStarted
     url: https://cloud.google.com/deploy/docs/quickstart
   - type: Documentation
     url: https://cloud.google.com/deploy/docs
@@ -57,19 +57,19 @@ common:
     url: https://cloud.google.com/deploy/docs/api/reference/rest#authentication
   - type: Pricing
     url: https://cloud.google.com/deploy/pricing
-  - type: Terms of Service
+  - type: TermsOfService
     url: https://cloud.google.com/terms
-  - type: Privacy Policy
+  - type: PrivacyPolicy
     url: https://policies.google.com/privacy
   - type: Console
     url: https://console.cloud.google.com/deploy
   - type: CLI
     url: https://cloud.google.com/sdk/gcloud/reference/deploy
-  - type: Status
+  - type: StatusPage
     url: https://status.cloud.google.com
   - type: Support
     url: https://cloud.google.com/deploy/docs/support
-  - type: JSON-LD
+  - type: JSONLD
     url: json-ld/google-cloud-deploy-context.jsonld
   - type: Integrations
     url: https://cloud.google.com/marketplace
