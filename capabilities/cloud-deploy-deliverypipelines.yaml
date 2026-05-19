@@ -1,0 +1,208 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Google Cloud Deploy API — DeliveryPipelines
+  description: 'Google Cloud Deploy API — DeliveryPipelines. 5 operations. Lead operation: Google Cloud Deploy List delivery
+    pipelines. Self-contained Naftiko capability covering one Google Cloud Deploy business surface.'
+  tags:
+  - Google Cloud Deploy
+  - DeliveryPipelines
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    GOOGLE_CLOUD_DEPLOY_API_KEY: GOOGLE_CLOUD_DEPLOY_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: cloud-deploy-deliverypipelines
+    baseUri: https://clouddeploy.googleapis.com/v1
+    description: Google Cloud Deploy API — DeliveryPipelines business capability. Self-contained, no shared references.
+    resources:
+    - name: projects-projectId-locations-location-deliveryPipelines
+      path: /projects/{projectId}/locations/{location}/deliveryPipelines
+      operations:
+      - name: listdeliverypipelines
+        method: GET
+        description: Google Cloud Deploy List delivery pipelines
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createdeliverypipeline
+        method: POST
+        description: Google Cloud Deploy Create a delivery pipeline
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: deliveryPipelineId
+          in: query
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: projects-projectId-locations-location-deliveryPipelines-pipelineId
+      path: /projects/{projectId}/locations/{location}/deliveryPipelines/{pipelineId}
+      operations:
+      - name: getdeliverypipeline
+        method: GET
+        description: Google Cloud Deploy Get a delivery pipeline
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updatedeliverypipeline
+        method: PATCH
+        description: Google Cloud Deploy Update a delivery pipeline
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: updateMask
+          in: query
+          type: string
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deletedeliverypipeline
+        method: DELETE
+        description: Google Cloud Deploy Delete a delivery pipeline
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.GOOGLE_CLOUD_DEPLOY_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: cloud-deploy-deliverypipelines-rest
+    port: 8080
+    description: REST adapter for Google Cloud Deploy API — DeliveryPipelines. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/projects/{projectid}/locations/{location}/deliverypipelines
+      name: projects-projectid-locations-location-deliverypipelines
+      description: REST surface for projects-projectId-locations-location-deliveryPipelines.
+      operations:
+      - method: GET
+        name: listdeliverypipelines
+        description: Google Cloud Deploy List delivery pipelines
+        call: cloud-deploy-deliverypipelines.listdeliverypipelines
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createdeliverypipeline
+        description: Google Cloud Deploy Create a delivery pipeline
+        call: cloud-deploy-deliverypipelines.createdeliverypipeline
+        with:
+          deliveryPipelineId: rest.deliveryPipelineId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/projects/{projectid}/locations/{location}/deliverypipelines/{pipelineid}
+      name: projects-projectid-locations-location-deliverypipelines-pipelineid
+      description: REST surface for projects-projectId-locations-location-deliveryPipelines-pipelineId.
+      operations:
+      - method: GET
+        name: getdeliverypipeline
+        description: Google Cloud Deploy Get a delivery pipeline
+        call: cloud-deploy-deliverypipelines.getdeliverypipeline
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: updatedeliverypipeline
+        description: Google Cloud Deploy Update a delivery pipeline
+        call: cloud-deploy-deliverypipelines.updatedeliverypipeline
+        with:
+          updateMask: rest.updateMask
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletedeliverypipeline
+        description: Google Cloud Deploy Delete a delivery pipeline
+        call: cloud-deploy-deliverypipelines.deletedeliverypipeline
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: cloud-deploy-deliverypipelines-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Google Cloud Deploy API — DeliveryPipelines. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: google-cloud-deploy-list-delivery
+      description: Google Cloud Deploy List delivery pipelines
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: cloud-deploy-deliverypipelines.listdeliverypipelines
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: google-cloud-deploy-create-delivery
+      description: Google Cloud Deploy Create a delivery pipeline
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: cloud-deploy-deliverypipelines.createdeliverypipeline
+      with:
+        deliveryPipelineId: tools.deliveryPipelineId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: google-cloud-deploy-get-delivery
+      description: Google Cloud Deploy Get a delivery pipeline
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: cloud-deploy-deliverypipelines.getdeliverypipeline
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: google-cloud-deploy-update-delivery
+      description: Google Cloud Deploy Update a delivery pipeline
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: cloud-deploy-deliverypipelines.updatedeliverypipeline
+      with:
+        updateMask: tools.updateMask
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: google-cloud-deploy-delete-delivery
+      description: Google Cloud Deploy Delete a delivery pipeline
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: cloud-deploy-deliverypipelines.deletedeliverypipeline
+      outputParameters:
+      - type: object
+        mapping: $.
