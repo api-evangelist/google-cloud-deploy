@@ -1,0 +1,479 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Google Cloud Deploy API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://accounts.google.com/o/oauth2/auth",
+      "accessTokenUrl": "https://oauth2.googleapis.com/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "DeliveryPipelines",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Google Cloud Deploy List delivery pipelines",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://clouddeploy.googleapis.com/v1/projects/:projectId/locations/:location/deliveryPipelines",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "location",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pageToken",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Lists delivery pipelines in a given project and location."
+        },
+        {
+          "info": {
+            "name": "Google Cloud Deploy Create a delivery pipeline",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://clouddeploy.googleapis.com/v1/projects/:projectId/locations/:location/deliveryPipelines",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "location",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "deliveryPipelineId",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new delivery pipeline."
+        },
+        {
+          "info": {
+            "name": "Google Cloud Deploy Get a delivery pipeline",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://clouddeploy.googleapis.com/v1/projects/:projectId/locations/:location/deliveryPipelines/:pipelineId",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "location",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "pipelineId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Gets details of a single delivery pipeline."
+        },
+        {
+          "info": {
+            "name": "Google Cloud Deploy Update a delivery pipeline",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://clouddeploy.googleapis.com/v1/projects/:projectId/locations/:location/deliveryPipelines/:pipelineId",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "location",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "pipelineId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "updateMask",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the parameters of a single delivery pipeline."
+        },
+        {
+          "info": {
+            "name": "Google Cloud Deploy Delete a delivery pipeline",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://clouddeploy.googleapis.com/v1/projects/:projectId/locations/:location/deliveryPipelines/:pipelineId",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "location",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "pipelineId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Deletes a single delivery pipeline."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Targets",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Google Cloud Deploy List targets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://clouddeploy.googleapis.com/v1/projects/:projectId/locations/:location/targets",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "location",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pageToken",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Lists targets in a given project and location."
+        },
+        {
+          "info": {
+            "name": "Google Cloud Deploy Create a target",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://clouddeploy.googleapis.com/v1/projects/:projectId/locations/:location/targets",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "location",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "targetId",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new target in a given project and location."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Releases",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Google Cloud Deploy List releases",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://clouddeploy.googleapis.com/v1/projects/:projectId/locations/:location/deliveryPipelines/:pipelineId/releases",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "location",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "pipelineId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pageToken",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Lists releases in a given delivery pipeline."
+        },
+        {
+          "info": {
+            "name": "Google Cloud Deploy Create a release",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://clouddeploy.googleapis.com/v1/projects/:projectId/locations/:location/deliveryPipelines/:pipelineId/releases",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "location",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "pipelineId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "releaseId",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new release in a given delivery pipeline."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Rollouts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Google Cloud Deploy List rollouts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://clouddeploy.googleapis.com/v1/projects/:projectId/locations/:location/deliveryPipelines/:pipelineId/releases/:releaseId/rollouts",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "location",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "pipelineId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "releaseId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pageToken",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Lists rollouts in a given release."
+        },
+        {
+          "info": {
+            "name": "Google Cloud Deploy Create a rollout",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://clouddeploy.googleapis.com/v1/projects/:projectId/locations/:location/deliveryPipelines/:pipelineId/releases/:releaseId/rollouts",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "location",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "pipelineId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "releaseId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "rolloutId",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new rollout in a given release."
+        },
+        {
+          "info": {
+            "name": "Google Cloud Deploy Approve a rollout",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://clouddeploy.googleapis.com/v1/projects/:projectId/locations/:location/deliveryPipelines/:pipelineId/releases/:releaseId/rollouts/:rolloutId:approve",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "location",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "pipelineId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "releaseId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "rolloutId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Approves a rollout that requires approval."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
