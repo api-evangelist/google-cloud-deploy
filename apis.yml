@@ -43,6 +43,12 @@ apis:
       - type: JSONSchema
         url: json-schema/google-cloud-deploy-release-schema.json
 common:
+  - type: VulnerabilityDisclosure
+    url: security/google-cloud-deploy-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/google-cloud-deploy-domain-security.yml
+  - type: Authentication
+    url: authentication/google-cloud-deploy-authentication.yml
   - type: OAuthScopes
     url: scopes/google-cloud-deploy-scopes.yml
   - type: GitHubOrganization
