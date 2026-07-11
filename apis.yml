@@ -43,6 +43,8 @@ apis:
       - type: JSONSchema
         url: json-schema/google-cloud-deploy-release-schema.json
 common:
+  - type: OAuthScopes
+    url: scopes/google-cloud-deploy-scopes.yml
   - type: GitHubOrganization
     url: https://github.com/GoogleCloudPlatform
   - type: Portal
