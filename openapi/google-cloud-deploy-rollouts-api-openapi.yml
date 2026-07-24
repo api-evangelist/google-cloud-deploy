@@ -1,0 +1,200 @@
+openapi: 3.1.0
+info:
+  title: Google Cloud Deploy DeliveryPipelines Rollouts API
+  description: The Cloud Deploy API provides programmatic access to manage delivery pipelines, targets, releases, and rollouts for continuous delivery workflows on Google Cloud. It supports promoting releases through target environments with approval gates and rollback capabilities.
+  version: v1
+  contact:
+    name: Google Cloud Support
+    url: https://cloud.google.com/deploy/docs/support
+  termsOfService: https://cloud.google.com/terms
+servers:
+- url: https://clouddeploy.googleapis.com/v1
+  description: Production Server
+security:
+- oauth2: []
+tags:
+- name: Rollouts
+  description: Operations for managing rollouts
+paths:
+  /projects/{projectId}/locations/{location}/deliveryPipelines/{pipelineId}/releases/{releaseId}/rollouts:
+    get:
+      operationId: listRollouts
+      summary: Google Cloud Deploy List rollouts
+      description: Lists rollouts in a given release.
+      tags:
+      - Rollouts
+      parameters:
+      - $ref: '#/components/parameters/projectId'
+      - $ref: '#/components/parameters/location'
+      - $ref: '#/components/parameters/pipelineId'
+      - $ref: '#/components/parameters/releaseId'
+      - $ref: '#/components/parameters/pageSize'
+      - $ref: '#/components/parameters/pageToken'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListRolloutsResponse'
+    post:
+      operationId: createRollout
+      summary: Google Cloud Deploy Create a rollout
+      description: Creates a new rollout in a given release.
+      tags:
+      - Rollouts
+      parameters:
+      - $ref: '#/components/parameters/projectId'
+      - $ref: '#/components/parameters/location'
+      - $ref: '#/components/parameters/pipelineId'
+      - $ref: '#/components/parameters/releaseId'
+      - name: rolloutId
+        in: query
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Rollout'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Operation'
+  ? /projects/{projectId}/locations/{location}/deliveryPipelines/{pipelineId}/releases/{releaseId}/rollouts/{rolloutId}:approve
+  : post:
+      operationId: approveRollout
+      summary: Google Cloud Deploy Approve a rollout
+      description: Approves a rollout that requires approval.
+      tags:
+      - Rollouts
+      parameters:
+      - $ref: '#/components/parameters/projectId'
+      - $ref: '#/components/parameters/location'
+      - $ref: '#/components/parameters/pipelineId'
+      - $ref: '#/components/parameters/releaseId'
+      - name: rolloutId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                approved:
+                  type: boolean
+      responses:
+        '200':
+          description: Successful response
+components:
+  parameters:
+    location:
+      name: location
+      in: path
+      required: true
+      schema:
+        type: string
+    pipelineId:
+      name: pipelineId
+      in: path
+      required: true
+      schema:
+        type: string
+    pageToken:
+      name: pageToken
+      in: query
+      schema:
+        type: string
+    pageSize:
+      name: pageSize
+      in: query
+      schema:
+        type: integer
+    releaseId:
+      name: releaseId
+      in: path
+      required: true
+      schema:
+        type: string
+    projectId:
+      name: projectId
+      in: path
+      required: true
+      schema:
+        type: string
+  schemas:
+    Operation:
+      type: object
+      properties:
+        name:
+          type: string
+        done:
+          type: boolean
+    ListRolloutsResponse:
+      type: object
+      properties:
+        rollouts:
+          type: array
+          items:
+            $ref: '#/components/schemas/Rollout'
+        nextPageToken:
+          type: string
+    Rollout:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        targetId:
+          type: string
+        approvalState:
+          type: string
+          enum:
+          - NEEDS_APPROVAL
+          - DOES_NOT_NEED_APPROVAL
+          - APPROVED
+          - REJECTED
+        state:
+          type: string
+          enum:
+          - SUCCEEDED
+          - FAILED
+          - IN_PROGRESS
+          - PENDING_APPROVAL
+          - APPROVAL_REJECTED
+          - PENDING
+          - PENDING_RELEASE
+          - CANCELLING
+          - CANCELLED
+          - HALTED
+        deployStartTime:
+          type: string
+          format: date-time
+        deployEndTime:
+          type: string
+          format: date-time
+        createTime:
+          type: string
+          format: date-time
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://accounts.google.com/o/oauth2/auth
+          tokenUrl: https://oauth2.googleapis.com/token
+          scopes:
+            https://www.googleapis.com/auth/cloud-platform: Full access to Google Cloud
+externalDocs:
+  description: Cloud Deploy API Documentation
+  url: https://cloud.google.com/deploy/docs/api/reference/rest

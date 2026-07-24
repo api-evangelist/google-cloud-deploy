@@ -1,0 +1,157 @@
+openapi: 3.1.0
+info:
+  title: Google Cloud Deploy DeliveryPipelines Targets API
+  description: The Cloud Deploy API provides programmatic access to manage delivery pipelines, targets, releases, and rollouts for continuous delivery workflows on Google Cloud. It supports promoting releases through target environments with approval gates and rollback capabilities.
+  version: v1
+  contact:
+    name: Google Cloud Support
+    url: https://cloud.google.com/deploy/docs/support
+  termsOfService: https://cloud.google.com/terms
+servers:
+- url: https://clouddeploy.googleapis.com/v1
+  description: Production Server
+security:
+- oauth2: []
+tags:
+- name: Targets
+  description: Operations for managing deployment targets
+paths:
+  /projects/{projectId}/locations/{location}/targets:
+    get:
+      operationId: listTargets
+      summary: Google Cloud Deploy List targets
+      description: Lists targets in a given project and location.
+      tags:
+      - Targets
+      parameters:
+      - $ref: '#/components/parameters/projectId'
+      - $ref: '#/components/parameters/location'
+      - $ref: '#/components/parameters/pageSize'
+      - $ref: '#/components/parameters/pageToken'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListTargetsResponse'
+    post:
+      operationId: createTarget
+      summary: Google Cloud Deploy Create a target
+      description: Creates a new target in a given project and location.
+      tags:
+      - Targets
+      parameters:
+      - $ref: '#/components/parameters/projectId'
+      - $ref: '#/components/parameters/location'
+      - name: targetId
+        in: query
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Target'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Operation'
+components:
+  parameters:
+    location:
+      name: location
+      in: path
+      required: true
+      schema:
+        type: string
+    pageToken:
+      name: pageToken
+      in: query
+      schema:
+        type: string
+    pageSize:
+      name: pageSize
+      in: query
+      schema:
+        type: integer
+    projectId:
+      name: projectId
+      in: path
+      required: true
+      schema:
+        type: string
+  schemas:
+    Operation:
+      type: object
+      properties:
+        name:
+          type: string
+        done:
+          type: boolean
+    Target:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        annotations:
+          type: object
+          additionalProperties:
+            type: string
+        labels:
+          type: object
+          additionalProperties:
+            type: string
+        requireApproval:
+          type: boolean
+          description: Whether this target requires approval before deployment
+        gke:
+          type: object
+          description: GKE target configuration
+          properties:
+            cluster:
+              type: string
+              description: Resource name of the GKE cluster
+            internalIp:
+              type: boolean
+        run:
+          type: object
+          description: Cloud Run target configuration
+          properties:
+            location:
+              type: string
+              description: The Cloud Run location
+        createTime:
+          type: string
+          format: date-time
+        updateTime:
+          type: string
+          format: date-time
+    ListTargetsResponse:
+      type: object
+      properties:
+        targets:
+          type: array
+          items:
+            $ref: '#/components/schemas/Target'
+        nextPageToken:
+          type: string
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://accounts.google.com/o/oauth2/auth
+          tokenUrl: https://oauth2.googleapis.com/token
+          scopes:
+            https://www.googleapis.com/auth/cloud-platform: Full access to Google Cloud
+externalDocs:
+  description: Cloud Deploy API Documentation
+  url: https://cloud.google.com/deploy/docs/api/reference/rest

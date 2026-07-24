@@ -1,0 +1,260 @@
+openapi: 3.1.0
+info:
+  title: Google Cloud Deploy DeliveryPipelines API
+  description: The Cloud Deploy API provides programmatic access to manage delivery pipelines, targets, releases, and rollouts for continuous delivery workflows on Google Cloud. It supports promoting releases through target environments with approval gates and rollback capabilities.
+  version: v1
+  contact:
+    name: Google Cloud Support
+    url: https://cloud.google.com/deploy/docs/support
+  termsOfService: https://cloud.google.com/terms
+servers:
+- url: https://clouddeploy.googleapis.com/v1
+  description: Production Server
+security:
+- oauth2: []
+tags:
+- name: DeliveryPipelines
+  description: Operations for managing delivery pipelines
+paths:
+  /projects/{projectId}/locations/{location}/deliveryPipelines:
+    get:
+      operationId: listDeliveryPipelines
+      summary: Google Cloud Deploy List delivery pipelines
+      description: Lists delivery pipelines in a given project and location.
+      tags:
+      - DeliveryPipelines
+      parameters:
+      - $ref: '#/components/parameters/projectId'
+      - $ref: '#/components/parameters/location'
+      - $ref: '#/components/parameters/pageSize'
+      - $ref: '#/components/parameters/pageToken'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListDeliveryPipelinesResponse'
+    post:
+      operationId: createDeliveryPipeline
+      summary: Google Cloud Deploy Create a delivery pipeline
+      description: Creates a new delivery pipeline.
+      tags:
+      - DeliveryPipelines
+      parameters:
+      - $ref: '#/components/parameters/projectId'
+      - $ref: '#/components/parameters/location'
+      - name: deliveryPipelineId
+        in: query
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeliveryPipeline'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Operation'
+  /projects/{projectId}/locations/{location}/deliveryPipelines/{pipelineId}:
+    get:
+      operationId: getDeliveryPipeline
+      summary: Google Cloud Deploy Get a delivery pipeline
+      description: Gets details of a single delivery pipeline.
+      tags:
+      - DeliveryPipelines
+      parameters:
+      - $ref: '#/components/parameters/projectId'
+      - $ref: '#/components/parameters/location'
+      - $ref: '#/components/parameters/pipelineId'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeliveryPipeline'
+    patch:
+      operationId: updateDeliveryPipeline
+      summary: Google Cloud Deploy Update a delivery pipeline
+      description: Updates the parameters of a single delivery pipeline.
+      tags:
+      - DeliveryPipelines
+      parameters:
+      - $ref: '#/components/parameters/projectId'
+      - $ref: '#/components/parameters/location'
+      - $ref: '#/components/parameters/pipelineId'
+      - name: updateMask
+        in: query
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeliveryPipeline'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Operation'
+    delete:
+      operationId: deleteDeliveryPipeline
+      summary: Google Cloud Deploy Delete a delivery pipeline
+      description: Deletes a single delivery pipeline.
+      tags:
+      - DeliveryPipelines
+      parameters:
+      - $ref: '#/components/parameters/projectId'
+      - $ref: '#/components/parameters/location'
+      - $ref: '#/components/parameters/pipelineId'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Operation'
+components:
+  parameters:
+    location:
+      name: location
+      in: path
+      required: true
+      schema:
+        type: string
+    pipelineId:
+      name: pipelineId
+      in: path
+      required: true
+      schema:
+        type: string
+    pageToken:
+      name: pageToken
+      in: query
+      schema:
+        type: string
+    pageSize:
+      name: pageSize
+      in: query
+      schema:
+        type: integer
+    projectId:
+      name: projectId
+      in: path
+      required: true
+      schema:
+        type: string
+  schemas:
+    Operation:
+      type: object
+      properties:
+        name:
+          type: string
+        done:
+          type: boolean
+    ListDeliveryPipelinesResponse:
+      type: object
+      properties:
+        deliveryPipelines:
+          type: array
+          items:
+            $ref: '#/components/schemas/DeliveryPipeline'
+        nextPageToken:
+          type: string
+    Stage:
+      type: object
+      properties:
+        targetId:
+          type: string
+          description: The target ID for this stage
+        profiles:
+          type: array
+          items:
+            type: string
+          description: Skaffold profiles to use during rendering
+        strategy:
+          type: object
+          properties:
+            standard:
+              type: object
+              properties:
+                verify:
+                  type: boolean
+            canary:
+              type: object
+              properties:
+                percentages:
+                  type: array
+                  items:
+                    type: integer
+                verify:
+                  type: boolean
+    DeliveryPipeline:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The resource name of the delivery pipeline
+        description:
+          type: string
+        annotations:
+          type: object
+          additionalProperties:
+            type: string
+        labels:
+          type: object
+          additionalProperties:
+            type: string
+        serialPipeline:
+          type: object
+          description: Serial pipeline definition
+          properties:
+            stages:
+              type: array
+              items:
+                $ref: '#/components/schemas/Stage'
+        condition:
+          type: object
+          properties:
+            pipelineReadyCondition:
+              type: object
+              properties:
+                status:
+                  type: boolean
+            targetsPresentCondition:
+              type: object
+              properties:
+                status:
+                  type: boolean
+                missingTargets:
+                  type: array
+                  items:
+                    type: string
+        createTime:
+          type: string
+          format: date-time
+        updateTime:
+          type: string
+          format: date-time
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://accounts.google.com/o/oauth2/auth
+          tokenUrl: https://oauth2.googleapis.com/token
+          scopes:
+            https://www.googleapis.com/auth/cloud-platform: Full access to Google Cloud
+externalDocs:
+  description: Cloud Deploy API Documentation
+  url: https://cloud.google.com/deploy/docs/api/reference/rest
