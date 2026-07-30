@@ -5,7 +5,20 @@ description: >-
   Cloud target environments such as GKE, Cloud Run, and Anthos. It provides an opinionated delivery pipeline that
   promotes releases through a series of target environments with approval gates, rollback capabilities, and deployment
   verification, enabling safe and repeatable software delivery workflows.
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/google-cloud-deploy.png
 url: https://raw.githubusercontent.com/api-evangelist/google-cloud-deploy/refs/heads/main/apis.yml
 created: '2026-03-13'
 modified: '2026-05-19'
@@ -19,30 +32,73 @@ tags:
   - Pipeline
   - Release Management
 apis:
-  - name: Cloud Deploy API
-    description: >-
-      The Cloud Deploy API provides programmatic access to manage delivery pipelines, targets, releases, and rollouts
-      for continuous delivery workflows. Developers can use the API to create and manage delivery pipelines that define
-      the progression of releases through target environments, create releases from build artifacts, promote releases
-      between targets, approve rollouts, and manage rollback operations.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://cloud.google.com/deploy/docs
-    baseURL: https://clouddeploy.googleapis.com
-    tags:
-      - Delivery Pipelines
-      - Releases
-      - Rollouts
-      - Targets
-    properties:
-      - type: Documentation
-        url: https://cloud.google.com/deploy/docs/api/reference/rest
-      - type: OpenAPI
-        url: openapi/cloud-deploy-api-openapi.yml
-      - type: Authentication
-        url: https://cloud.google.com/deploy/docs/api/reference/rest#authentication
-      - type: JSONSchema
-        url: json-schema/google-cloud-deploy-release-schema.json
+- aid: google-cloud-deploy:google-cloud-deploy-deliverypipelines-api
+  name: Google Cloud Deploy DeliveryPipelines API
+  description: Operations for managing delivery pipelines
+  humanURL: https://cloud.google.com/deploy/docs
+  baseURL: https://clouddeploy.googleapis.com
+  tags:
+  - DeliveryPipelines
+  properties:
+  - type: OpenAPI
+    url: openapi/google-cloud-deploy-deliverypipelines-api-openapi.yml
+  - type: Documentation
+    url: https://cloud.google.com/deploy/docs/api/reference/rest
+  - type: Authentication
+    url: https://cloud.google.com/deploy/docs/api/reference/rest#authentication
+  - type: JSONSchema
+    url: json-schema/google-cloud-deploy-release-schema.json
+- aid: google-cloud-deploy:google-cloud-deploy-releases-api
+  name: Google Cloud Deploy Releases API
+  description: Operations for managing releases
+  humanURL: https://cloud.google.com/deploy/docs
+  baseURL: https://clouddeploy.googleapis.com
+  tags:
+  - Releases
+  properties:
+  - type: OpenAPI
+    url: openapi/google-cloud-deploy-releases-api-openapi.yml
+  - type: Documentation
+    url: https://cloud.google.com/deploy/docs/api/reference/rest
+  - type: Authentication
+    url: https://cloud.google.com/deploy/docs/api/reference/rest#authentication
+  - type: JSONSchema
+    url: json-schema/google-cloud-deploy-release-schema.json
+- aid: google-cloud-deploy:google-cloud-deploy-rollouts-api
+  name: Google Cloud Deploy Rollouts API
+  description: Operations for managing rollouts
+  humanURL: https://cloud.google.com/deploy/docs
+  baseURL: https://clouddeploy.googleapis.com
+  tags:
+  - Rollouts
+  properties:
+  - type: OpenAPI
+    url: openapi/google-cloud-deploy-rollouts-api-openapi.yml
+  - type: Documentation
+    url: https://cloud.google.com/deploy/docs/api/reference/rest
+  - type: Authentication
+    url: https://cloud.google.com/deploy/docs/api/reference/rest#authentication
+  - type: JSONSchema
+    url: json-schema/google-cloud-deploy-release-schema.json
+- aid: google-cloud-deploy:google-cloud-deploy-targets-api
+  name: Google Cloud Deploy Targets API
+  description: Operations for managing deployment targets
+  humanURL: https://cloud.google.com/deploy/docs
+  baseURL: https://clouddeploy.googleapis.com
+  tags:
+  - Targets
+  properties:
+  - type: OpenAPI
+    url: openapi/google-cloud-deploy-targets-api-openapi.yml
+  - type: Documentation
+    url: https://cloud.google.com/deploy/docs/api/reference/rest
+  - type: Authentication
+    url: https://cloud.google.com/deploy/docs/api/reference/rest#authentication
+  - type: JSONSchema
+    url: json-schema/google-cloud-deploy-release-schema.json
 common:
+  - type: PostmanWorkspace
+    url: https://www.postman.com/kinlaneapi/google-cloud-deploy/overview
   - type: AgenticAccess
     url: agentic-access/google-cloud-deploy-agentic-access.yml
   - type: VulnerabilityDisclosure
