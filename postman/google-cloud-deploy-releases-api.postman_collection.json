@@ -1,0 +1,402 @@
+{
+  "info": {
+    "_postman_id": "93093cbf-5619-470e-aba5-72bc9c771f7d",
+    "name": "Google Cloud Deploy DeliveryPipelines Releases API",
+    "description": "The Cloud Deploy API provides programmatic access to manage delivery pipelines, targets, releases, and rollouts for continuous delivery workflows on Google Cloud. It supports promoting releases through target environments with approval gates and rollback capabilities.\n\nContact Support:\n Name: Google Cloud Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:47:05.000Z",
+    "updatedAt": "2026-07-28T01:47:05.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-93093cbf-5619-470e-aba5-72bc9c771f7d"
+  },
+  "item": [
+    {
+      "name": "projects",
+      "item": [
+        {
+          "name": "{projectId}",
+          "item": [
+            {
+              "name": "locations",
+              "item": [
+                {
+                  "name": "{location}",
+                  "item": [
+                    {
+                      "name": "deliveryPipelines",
+                      "item": [
+                        {
+                          "name": "{pipelineId}",
+                          "item": [
+                            {
+                              "name": "releases",
+                              "item": [
+                                {
+                                  "name": "Google Cloud Deploy List releases",
+                                  "id": "383aa7ff-5382-4e9b-b03c-c05bda933ece",
+                                  "protocolProfileBehavior": {
+                                    "disableBodyPruning": true
+                                  },
+                                  "request": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/projects/:projectId/locations/:location/deliveryPipelines/:pipelineId/releases?pageSize=<integer>&pageToken=<string>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "projects",
+                                        ":projectId",
+                                        "locations",
+                                        ":location",
+                                        "deliveryPipelines",
+                                        ":pipelineId",
+                                        "releases"
+                                      ],
+                                      "query": [
+                                        {
+                                          "key": "pageSize",
+                                          "value": "<integer>"
+                                        },
+                                        {
+                                          "key": "pageToken",
+                                          "value": "<string>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "id": "d16a403d-b930-4c48-9a71-a38570d3c200",
+                                          "key": "projectId",
+                                          "value": "<string>",
+                                          "description": "(Required) "
+                                        },
+                                        {
+                                          "id": "9a4f8ede-4b90-4cdd-8cfe-3f2c8b563515",
+                                          "key": "location",
+                                          "value": "<string>",
+                                          "description": "(Required) "
+                                        },
+                                        {
+                                          "id": "a8381092-d3a5-4ecf-a4bc-7f6d8101e5ae",
+                                          "key": "pipelineId",
+                                          "value": "<string>",
+                                          "description": "(Required) "
+                                        }
+                                      ]
+                                    },
+                                    "description": "Lists releases in a given delivery pipeline."
+                                  },
+                                  "response": [
+                                    {
+                                      "id": "913eac52-a4cf-42b2-8867-b7dceedef76b",
+                                      "name": "Successful response",
+                                      "originalRequest": {
+                                        "method": "GET",
+                                        "header": [
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "description": "Added as a part of security scheme: oauth2",
+                                            "key": "Authorization",
+                                            "value": "<token>"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/projects/:projectId/locations/:location/deliveryPipelines/:pipelineId/releases?pageSize=<integer>&pageToken=<string>",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "projects",
+                                            ":projectId",
+                                            "locations",
+                                            ":location",
+                                            "deliveryPipelines",
+                                            ":pipelineId",
+                                            "releases"
+                                          ],
+                                          "query": [
+                                            {
+                                              "key": "pageSize",
+                                              "value": "<integer>"
+                                            },
+                                            {
+                                              "key": "pageToken",
+                                              "value": "<string>"
+                                            }
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "projectId"
+                                            },
+                                            {
+                                              "key": "location"
+                                            },
+                                            {
+                                              "key": "pipelineId"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "OK",
+                                      "code": 200,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "{\n  \"releases\": [\n    {\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"annotations\": {\n        \"reprehenderit_d\": \"<string>\",\n        \"et20\": \"<string>\"\n      },\n      \"labels\": {\n        \"amet_c14\": \"<string>\"\n      },\n      \"skaffoldConfigUri\": \"<string>\",\n      \"skaffoldConfigPath\": \"<string>\",\n      \"buildArtifacts\": [\n        {\n          \"image\": \"<string>\",\n          \"tag\": \"<string>\"\n        },\n        {\n          \"image\": \"<string>\",\n          \"tag\": \"<string>\"\n        }\n      ],\n      \"renderState\": \"IN_PROGRESS\",\n      \"createTime\": \"<dateTime>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"annotations\": {\n        \"in_e8\": \"<string>\",\n        \"quis_8b0\": \"<string>\"\n      },\n      \"labels\": {\n        \"anim_c\": \"<string>\"\n      },\n      \"skaffoldConfigUri\": \"<string>\",\n      \"skaffoldConfigPath\": \"<string>\",\n      \"buildArtifacts\": [\n        {\n          \"image\": \"<string>\",\n          \"tag\": \"<string>\"\n        },\n        {\n          \"image\": \"<string>\",\n          \"tag\": \"<string>\"\n        }\n      ],\n      \"renderState\": \"FAILED\",\n      \"createTime\": \"<dateTime>\"\n    }\n  ],\n  \"nextPageToken\": \"<string>\"\n}",
+                                      "createdAt": "2026-07-28T01:47:05.000Z",
+                                      "updatedAt": "2026-07-28T01:47:05.000Z",
+                                      "uid": "35240-913eac52-a4cf-42b2-8867-b7dceedef76b"
+                                    }
+                                  ],
+                                  "createdAt": "2026-07-28T01:47:05.000Z",
+                                  "updatedAt": "2026-07-28T01:47:05.000Z",
+                                  "uid": "35240-383aa7ff-5382-4e9b-b03c-c05bda933ece"
+                                },
+                                {
+                                  "name": "Google Cloud Deploy Create a release",
+                                  "id": "dfbb9fdd-4877-443f-83e3-396510238872",
+                                  "protocolProfileBehavior": {
+                                    "disableBodyPruning": true
+                                  },
+                                  "request": {
+                                    "method": "POST",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"annotations\": {\n    \"sit88f\": \"<string>\",\n    \"occaecatc\": \"<string>\"\n  },\n  \"labels\": {\n    \"anim56f\": \"<string>\",\n    \"in3\": \"<string>\",\n    \"irure_df4\": \"<string>\"\n  },\n  \"skaffoldConfigUri\": \"<string>\",\n  \"skaffoldConfigPath\": \"<string>\",\n  \"buildArtifacts\": [\n    {\n      \"image\": \"<string>\",\n      \"tag\": \"<string>\"\n    },\n    {\n      \"image\": \"<string>\",\n      \"tag\": \"<string>\"\n    }\n  ],\n  \"renderState\": \"IN_PROGRESS\",\n  \"createTime\": \"<dateTime>\"\n}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/projects/:projectId/locations/:location/deliveryPipelines/:pipelineId/releases?releaseId=<string>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "projects",
+                                        ":projectId",
+                                        "locations",
+                                        ":location",
+                                        "deliveryPipelines",
+                                        ":pipelineId",
+                                        "releases"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "(Required) ",
+                                          "key": "releaseId",
+                                          "value": "<string>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "id": "e1d13dc8-a3ce-4dea-ae77-8abc59d1cb4e",
+                                          "key": "projectId",
+                                          "value": "<string>",
+                                          "description": "(Required) "
+                                        },
+                                        {
+                                          "id": "9946213d-fff7-4f09-9f93-ca9279bf4ef7",
+                                          "key": "location",
+                                          "value": "<string>",
+                                          "description": "(Required) "
+                                        },
+                                        {
+                                          "id": "33505582-567d-4865-a098-45ff4163b981",
+                                          "key": "pipelineId",
+                                          "value": "<string>",
+                                          "description": "(Required) "
+                                        }
+                                      ]
+                                    },
+                                    "description": "Creates a new release in a given delivery pipeline."
+                                  },
+                                  "response": [
+                                    {
+                                      "id": "6da4a157-8846-4e80-b711-84e52e698a48",
+                                      "name": "Successful response",
+                                      "originalRequest": {
+                                        "method": "POST",
+                                        "header": [
+                                          {
+                                            "key": "Content-Type",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "description": "Added as a part of security scheme: oauth2",
+                                            "key": "Authorization",
+                                            "value": "<token>"
+                                          }
+                                        ],
+                                        "body": {
+                                          "mode": "raw",
+                                          "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"annotations\": {\n    \"sit88f\": \"<string>\",\n    \"occaecatc\": \"<string>\"\n  },\n  \"labels\": {\n    \"anim56f\": \"<string>\",\n    \"in3\": \"<string>\",\n    \"irure_df4\": \"<string>\"\n  },\n  \"skaffoldConfigUri\": \"<string>\",\n  \"skaffoldConfigPath\": \"<string>\",\n  \"buildArtifacts\": [\n    {\n      \"image\": \"<string>\",\n      \"tag\": \"<string>\"\n    },\n    {\n      \"image\": \"<string>\",\n      \"tag\": \"<string>\"\n    }\n  ],\n  \"renderState\": \"IN_PROGRESS\",\n  \"createTime\": \"<dateTime>\"\n}",
+                                          "options": {
+                                            "raw": {
+                                              "headerFamily": "json",
+                                              "language": "json"
+                                            }
+                                          }
+                                        },
+                                        "url": {
+                                          "raw": "{{baseUrl}}/projects/:projectId/locations/:location/deliveryPipelines/:pipelineId/releases?releaseId=<string>",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "projects",
+                                            ":projectId",
+                                            "locations",
+                                            ":location",
+                                            "deliveryPipelines",
+                                            ":pipelineId",
+                                            "releases"
+                                          ],
+                                          "query": [
+                                            {
+                                              "description": "(Required) ",
+                                              "key": "releaseId",
+                                              "value": "<string>"
+                                            }
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "projectId"
+                                            },
+                                            {
+                                              "key": "location"
+                                            },
+                                            {
+                                              "key": "pipelineId"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "OK",
+                                      "code": 200,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "{\n  \"name\": \"<string>\",\n  \"done\": \"<boolean>\"\n}",
+                                      "createdAt": "2026-07-28T01:47:05.000Z",
+                                      "updatedAt": "2026-07-28T01:47:05.000Z",
+                                      "uid": "35240-6da4a157-8846-4e80-b711-84e52e698a48"
+                                    }
+                                  ],
+                                  "createdAt": "2026-07-28T01:47:05.000Z",
+                                  "updatedAt": "2026-07-28T01:47:05.000Z",
+                                  "uid": "35240-dfbb9fdd-4877-443f-83e3-396510238872"
+                                }
+                              ],
+                              "id": "0067090e-f896-4fc4-ac7f-708e04159f2f",
+                              "createdAt": "2026-07-28T01:47:05.000Z",
+                              "updatedAt": "2026-07-28T01:47:05.000Z",
+                              "uid": "35240-0067090e-f896-4fc4-ac7f-708e04159f2f"
+                            }
+                          ],
+                          "id": "57b28d12-7cbe-4613-9aba-ab95edd96e2f",
+                          "createdAt": "2026-07-28T01:47:05.000Z",
+                          "updatedAt": "2026-07-28T01:47:05.000Z",
+                          "uid": "35240-57b28d12-7cbe-4613-9aba-ab95edd96e2f"
+                        }
+                      ],
+                      "id": "2c50c06c-4464-4625-8e73-f158e9988d95",
+                      "createdAt": "2026-07-28T01:47:05.000Z",
+                      "updatedAt": "2026-07-28T01:47:05.000Z",
+                      "uid": "35240-2c50c06c-4464-4625-8e73-f158e9988d95"
+                    }
+                  ],
+                  "id": "a42fab19-d11c-4683-822a-d44b21d643ef",
+                  "createdAt": "2026-07-28T01:47:05.000Z",
+                  "updatedAt": "2026-07-28T01:47:05.000Z",
+                  "uid": "35240-a42fab19-d11c-4683-822a-d44b21d643ef"
+                }
+              ],
+              "id": "4fd11e2f-f216-4dd1-92a0-2f3ce666b06f",
+              "createdAt": "2026-07-28T01:47:05.000Z",
+              "updatedAt": "2026-07-28T01:47:05.000Z",
+              "uid": "35240-4fd11e2f-f216-4dd1-92a0-2f3ce666b06f"
+            }
+          ],
+          "id": "187bb257-a7f7-453e-8624-2537accc612d",
+          "createdAt": "2026-07-28T01:47:05.000Z",
+          "updatedAt": "2026-07-28T01:47:05.000Z",
+          "uid": "35240-187bb257-a7f7-453e-8624-2537accc612d"
+        }
+      ],
+      "id": "17ea145a-a14c-4e4a-8b57-12e3ad4264b7",
+      "createdAt": "2026-07-28T01:47:05.000Z",
+      "updatedAt": "2026-07-28T01:47:05.000Z",
+      "uid": "35240-17ea145a-a14c-4e4a-8b57-12e3ad4264b7"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "https://www.googleapis.com/auth/cloud-platform",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://oauth2.googleapis.com/token",
+        "type": "string"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://accounts.google.com/o/oauth2/auth",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://clouddeploy.googleapis.com/v1"
+    }
+  ]
+}

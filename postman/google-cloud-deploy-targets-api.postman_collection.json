@@ -1,0 +1,358 @@
+{
+  "info": {
+    "_postman_id": "466c63be-6f52-4594-b3af-bcfbd769e7e2",
+    "name": "Google Cloud Deploy DeliveryPipelines Targets API",
+    "description": "The Cloud Deploy API provides programmatic access to manage delivery pipelines, targets, releases, and rollouts for continuous delivery workflows on Google Cloud. It supports promoting releases through target environments with approval gates and rollback capabilities.\n\nContact Support:\n Name: Google Cloud Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:47:21.000Z",
+    "updatedAt": "2026-07-28T01:47:21.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-466c63be-6f52-4594-b3af-bcfbd769e7e2"
+  },
+  "item": [
+    {
+      "name": "projects",
+      "item": [
+        {
+          "name": "{projectId}",
+          "item": [
+            {
+              "name": "locations",
+              "item": [
+                {
+                  "name": "{location}",
+                  "item": [
+                    {
+                      "name": "targets",
+                      "item": [
+                        {
+                          "name": "Google Cloud Deploy List targets",
+                          "id": "6ece8548-190e-4a1c-a41a-916a6a94b9b0",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/projects/:projectId/locations/:location/targets?pageSize=<integer>&pageToken=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "projects",
+                                ":projectId",
+                                "locations",
+                                ":location",
+                                "targets"
+                              ],
+                              "query": [
+                                {
+                                  "key": "pageSize",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "key": "pageToken",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "id": "c2af0701-eb81-447b-9237-b9c44cc4312d",
+                                  "key": "projectId",
+                                  "value": "<string>",
+                                  "description": "(Required) "
+                                },
+                                {
+                                  "id": "470b6d09-eaea-46de-8227-705285d6575b",
+                                  "key": "location",
+                                  "value": "<string>",
+                                  "description": "(Required) "
+                                }
+                              ]
+                            },
+                            "description": "Lists targets in a given project and location."
+                          },
+                          "response": [
+                            {
+                              "id": "e0b3a83f-f2e3-46ac-884f-644aabd9f7b0",
+                              "name": "Successful response",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/projects/:projectId/locations/:location/targets?pageSize=<integer>&pageToken=<string>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "projects",
+                                    ":projectId",
+                                    "locations",
+                                    ":location",
+                                    "targets"
+                                  ],
+                                  "query": [
+                                    {
+                                      "key": "pageSize",
+                                      "value": "<integer>"
+                                    },
+                                    {
+                                      "key": "pageToken",
+                                      "value": "<string>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "projectId"
+                                    },
+                                    {
+                                      "key": "location"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"targets\": [\n    {\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"annotations\": {\n        \"occaecat_9\": \"<string>\",\n        \"sed_0\": \"<string>\",\n        \"ut50\": \"<string>\"\n      },\n      \"labels\": {\n        \"Lorem_5c4\": \"<string>\",\n        \"proident_ca8\": \"<string>\",\n        \"laborum2\": \"<string>\",\n        \"in_b8\": \"<string>\"\n      },\n      \"requireApproval\": \"<boolean>\",\n      \"gke\": {\n        \"cluster\": \"<string>\",\n        \"internalIp\": \"<boolean>\"\n      },\n      \"run\": {\n        \"location\": \"<string>\"\n      },\n      \"createTime\": \"<dateTime>\",\n      \"updateTime\": \"<dateTime>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"annotations\": {\n        \"aliqua3\": \"<string>\",\n        \"exercitation_fc\": \"<string>\"\n      },\n      \"labels\": {\n        \"magna37d\": \"<string>\",\n        \"dolor_3\": \"<string>\",\n        \"Duis8\": \"<string>\"\n      },\n      \"requireApproval\": \"<boolean>\",\n      \"gke\": {\n        \"cluster\": \"<string>\",\n        \"internalIp\": \"<boolean>\"\n      },\n      \"run\": {\n        \"location\": \"<string>\"\n      },\n      \"createTime\": \"<dateTime>\",\n      \"updateTime\": \"<dateTime>\"\n    }\n  ],\n  \"nextPageToken\": \"<string>\"\n}",
+                              "createdAt": "2026-07-28T01:47:22.000Z",
+                              "updatedAt": "2026-07-28T01:47:22.000Z",
+                              "uid": "35240-e0b3a83f-f2e3-46ac-884f-644aabd9f7b0"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T01:47:22.000Z",
+                          "updatedAt": "2026-07-28T01:47:22.000Z",
+                          "uid": "35240-6ece8548-190e-4a1c-a41a-916a6a94b9b0"
+                        },
+                        {
+                          "name": "Google Cloud Deploy Create a target",
+                          "id": "1618bd9c-f587-4267-be02-7c6f31cc1125",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"annotations\": {\n    \"deserunte_\": \"<string>\",\n    \"occaecat_bc\": \"<string>\"\n  },\n  \"labels\": {\n    \"ut_d\": \"<string>\"\n  },\n  \"requireApproval\": \"<boolean>\",\n  \"gke\": {\n    \"cluster\": \"<string>\",\n    \"internalIp\": \"<boolean>\"\n  },\n  \"run\": {\n    \"location\": \"<string>\"\n  },\n  \"createTime\": \"<dateTime>\",\n  \"updateTime\": \"<dateTime>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/projects/:projectId/locations/:location/targets?targetId=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "projects",
+                                ":projectId",
+                                "locations",
+                                ":location",
+                                "targets"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) ",
+                                  "key": "targetId",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "id": "e9f608d4-c4f9-44ad-8d8c-cde615b27535",
+                                  "key": "projectId",
+                                  "value": "<string>",
+                                  "description": "(Required) "
+                                },
+                                {
+                                  "id": "3ed2c7ae-f508-41e7-9647-07d5e61c4957",
+                                  "key": "location",
+                                  "value": "<string>",
+                                  "description": "(Required) "
+                                }
+                              ]
+                            },
+                            "description": "Creates a new target in a given project and location."
+                          },
+                          "response": [
+                            {
+                              "id": "d4a629c6-6b18-4176-8395-cfd631b422f8",
+                              "name": "Successful response",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"annotations\": {\n    \"deserunte_\": \"<string>\",\n    \"occaecat_bc\": \"<string>\"\n  },\n  \"labels\": {\n    \"ut_d\": \"<string>\"\n  },\n  \"requireApproval\": \"<boolean>\",\n  \"gke\": {\n    \"cluster\": \"<string>\",\n    \"internalIp\": \"<boolean>\"\n  },\n  \"run\": {\n    \"location\": \"<string>\"\n  },\n  \"createTime\": \"<dateTime>\",\n  \"updateTime\": \"<dateTime>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/projects/:projectId/locations/:location/targets?targetId=<string>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "projects",
+                                    ":projectId",
+                                    "locations",
+                                    ":location",
+                                    "targets"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "(Required) ",
+                                      "key": "targetId",
+                                      "value": "<string>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "projectId"
+                                    },
+                                    {
+                                      "key": "location"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"name\": \"<string>\",\n  \"done\": \"<boolean>\"\n}",
+                              "createdAt": "2026-07-28T01:47:22.000Z",
+                              "updatedAt": "2026-07-28T01:47:22.000Z",
+                              "uid": "35240-d4a629c6-6b18-4176-8395-cfd631b422f8"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T01:47:22.000Z",
+                          "updatedAt": "2026-07-28T01:47:22.000Z",
+                          "uid": "35240-1618bd9c-f587-4267-be02-7c6f31cc1125"
+                        }
+                      ],
+                      "id": "021a1145-1cea-439a-b9ad-3b155df7424e",
+                      "createdAt": "2026-07-28T01:47:22.000Z",
+                      "updatedAt": "2026-07-28T01:47:22.000Z",
+                      "uid": "35240-021a1145-1cea-439a-b9ad-3b155df7424e"
+                    }
+                  ],
+                  "id": "3ea2c6a0-1e8b-42a2-85ff-140048a12e63",
+                  "createdAt": "2026-07-28T01:47:22.000Z",
+                  "updatedAt": "2026-07-28T01:47:22.000Z",
+                  "uid": "35240-3ea2c6a0-1e8b-42a2-85ff-140048a12e63"
+                }
+              ],
+              "id": "dfc01285-4391-437b-935f-d328e7ee0589",
+              "createdAt": "2026-07-28T01:47:22.000Z",
+              "updatedAt": "2026-07-28T01:47:22.000Z",
+              "uid": "35240-dfc01285-4391-437b-935f-d328e7ee0589"
+            }
+          ],
+          "id": "ca170430-c690-4b9c-a7c4-0c738c530d13",
+          "createdAt": "2026-07-28T01:47:22.000Z",
+          "updatedAt": "2026-07-28T01:47:22.000Z",
+          "uid": "35240-ca170430-c690-4b9c-a7c4-0c738c530d13"
+        }
+      ],
+      "id": "133db47b-d7c9-4335-a630-7986b33c8ef6",
+      "createdAt": "2026-07-28T01:47:22.000Z",
+      "updatedAt": "2026-07-28T01:47:22.000Z",
+      "uid": "35240-133db47b-d7c9-4335-a630-7986b33c8ef6"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "https://www.googleapis.com/auth/cloud-platform",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://oauth2.googleapis.com/token",
+        "type": "string"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://accounts.google.com/o/oauth2/auth",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://clouddeploy.googleapis.com/v1"
+    }
+  ]
+}

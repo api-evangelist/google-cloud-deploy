@@ -1,0 +1,749 @@
+{
+  "info": {
+    "_postman_id": "e7fdbdb0-5186-49a4-818b-4849bea3062f",
+    "name": "Google Cloud Deploy DeliveryPipelines API",
+    "description": "The Cloud Deploy API provides programmatic access to manage delivery pipelines, targets, releases, and rollouts for continuous delivery workflows on Google Cloud. It supports promoting releases through target environments with approval gates and rollback capabilities.\n\nContact Support:\n Name: Google Cloud Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:47:04.000Z",
+    "updatedAt": "2026-07-28T01:47:04.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-e7fdbdb0-5186-49a4-818b-4849bea3062f"
+  },
+  "item": [
+    {
+      "name": "projects",
+      "item": [
+        {
+          "name": "{projectId}",
+          "item": [
+            {
+              "name": "locations",
+              "item": [
+                {
+                  "name": "{location}",
+                  "item": [
+                    {
+                      "name": "deliveryPipelines",
+                      "item": [
+                        {
+                          "name": "{pipelineId}",
+                          "item": [
+                            {
+                              "name": "Google Cloud Deploy Get a delivery pipeline",
+                              "id": "5488c251-f8da-4f14-b060-0c16ece4149e",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/projects/:projectId/locations/:location/deliveryPipelines/:pipelineId",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "projects",
+                                    ":projectId",
+                                    "locations",
+                                    ":location",
+                                    "deliveryPipelines",
+                                    ":pipelineId"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "e1e49a6f-d8aa-41a5-aee8-532dc54d9705",
+                                      "key": "projectId",
+                                      "value": "<string>",
+                                      "description": "(Required) "
+                                    },
+                                    {
+                                      "id": "c72eb9ca-5f26-41ad-a77a-c1cdb208a56d",
+                                      "key": "location",
+                                      "value": "<string>",
+                                      "description": "(Required) "
+                                    },
+                                    {
+                                      "id": "3f5eb7ed-8f30-4c21-894d-341a2cd60ab3",
+                                      "key": "pipelineId",
+                                      "value": "<string>",
+                                      "description": "(Required) "
+                                    }
+                                  ]
+                                },
+                                "description": "Gets details of a single delivery pipeline."
+                              },
+                              "response": [
+                                {
+                                  "id": "79d39f64-aebe-4b69-a085-a5218439f2a8",
+                                  "name": "Successful response",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: oauth2",
+                                        "key": "Authorization",
+                                        "value": "<token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/projects/:projectId/locations/:location/deliveryPipelines/:pipelineId",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "projects",
+                                        ":projectId",
+                                        "locations",
+                                        ":location",
+                                        "deliveryPipelines",
+                                        ":pipelineId"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "projectId"
+                                        },
+                                        {
+                                          "key": "location"
+                                        },
+                                        {
+                                          "key": "pipelineId"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"annotations\": {\n    \"enim85d\": \"<string>\"\n  },\n  \"labels\": {\n    \"aute8e_\": \"<string>\",\n    \"quis_88\": \"<string>\",\n    \"reprehenderit_89\": \"<string>\"\n  },\n  \"serialPipeline\": {\n    \"stages\": [\n      {\n        \"targetId\": \"<string>\",\n        \"profiles\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"strategy\": {\n          \"standard\": {\n            \"verify\": \"<boolean>\"\n          },\n          \"canary\": {\n            \"percentages\": [\n              \"<integer>\",\n              \"<integer>\"\n            ],\n            \"verify\": \"<boolean>\"\n          }\n        }\n      },\n      {\n        \"targetId\": \"<string>\",\n        \"profiles\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"strategy\": {\n          \"standard\": {\n            \"verify\": \"<boolean>\"\n          },\n          \"canary\": {\n            \"percentages\": [\n              \"<integer>\",\n              \"<integer>\"\n            ],\n            \"verify\": \"<boolean>\"\n          }\n        }\n      }\n    ]\n  },\n  \"condition\": {\n    \"pipelineReadyCondition\": {\n      \"status\": \"<boolean>\"\n    },\n    \"targetsPresentCondition\": {\n      \"status\": \"<boolean>\",\n      \"missingTargets\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  },\n  \"createTime\": \"<dateTime>\",\n  \"updateTime\": \"<dateTime>\"\n}",
+                                  "createdAt": "2026-07-28T01:47:05.000Z",
+                                  "updatedAt": "2026-07-28T01:47:05.000Z",
+                                  "uid": "35240-79d39f64-aebe-4b69-a085-a5218439f2a8"
+                                }
+                              ],
+                              "createdAt": "2026-07-28T01:47:05.000Z",
+                              "updatedAt": "2026-07-28T01:47:05.000Z",
+                              "uid": "35240-5488c251-f8da-4f14-b060-0c16ece4149e"
+                            },
+                            {
+                              "name": "Google Cloud Deploy Update a delivery pipeline",
+                              "id": "cbba684c-fdfe-4d79-8f49-bea58679e2c6",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "method": "PATCH",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"annotations\": {\n    \"enim85d\": \"<string>\"\n  },\n  \"labels\": {\n    \"aute8e_\": \"<string>\",\n    \"quis_88\": \"<string>\",\n    \"reprehenderit_89\": \"<string>\"\n  },\n  \"serialPipeline\": {\n    \"stages\": [\n      {\n        \"targetId\": \"<string>\",\n        \"profiles\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"strategy\": {\n          \"standard\": {\n            \"verify\": \"<boolean>\"\n          },\n          \"canary\": {\n            \"percentages\": [\n              \"<integer>\",\n              \"<integer>\"\n            ],\n            \"verify\": \"<boolean>\"\n          }\n        }\n      },\n      {\n        \"targetId\": \"<string>\",\n        \"profiles\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"strategy\": {\n          \"standard\": {\n            \"verify\": \"<boolean>\"\n          },\n          \"canary\": {\n            \"percentages\": [\n              \"<integer>\",\n              \"<integer>\"\n            ],\n            \"verify\": \"<boolean>\"\n          }\n        }\n      }\n    ]\n  },\n  \"condition\": {\n    \"pipelineReadyCondition\": {\n      \"status\": \"<boolean>\"\n    },\n    \"targetsPresentCondition\": {\n      \"status\": \"<boolean>\",\n      \"missingTargets\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  },\n  \"createTime\": \"<dateTime>\",\n  \"updateTime\": \"<dateTime>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/projects/:projectId/locations/:location/deliveryPipelines/:pipelineId?updateMask=<string>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "projects",
+                                    ":projectId",
+                                    "locations",
+                                    ":location",
+                                    "deliveryPipelines",
+                                    ":pipelineId"
+                                  ],
+                                  "query": [
+                                    {
+                                      "key": "updateMask",
+                                      "value": "<string>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "ac9c617a-a16c-42fe-88cb-9e18f2a7138b",
+                                      "key": "projectId",
+                                      "value": "<string>",
+                                      "description": "(Required) "
+                                    },
+                                    {
+                                      "id": "c2f05ec0-c8cb-422d-ba6b-e42fe03854f3",
+                                      "key": "location",
+                                      "value": "<string>",
+                                      "description": "(Required) "
+                                    },
+                                    {
+                                      "id": "ff899d1d-93ea-477a-ac3e-ee1b58d9b93c",
+                                      "key": "pipelineId",
+                                      "value": "<string>",
+                                      "description": "(Required) "
+                                    }
+                                  ]
+                                },
+                                "description": "Updates the parameters of a single delivery pipeline."
+                              },
+                              "response": [
+                                {
+                                  "id": "df16ab0a-1eb2-42b4-b7c8-764ac5edce77",
+                                  "name": "Successful response",
+                                  "originalRequest": {
+                                    "method": "PATCH",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: oauth2",
+                                        "key": "Authorization",
+                                        "value": "<token>"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"annotations\": {\n    \"enim85d\": \"<string>\"\n  },\n  \"labels\": {\n    \"aute8e_\": \"<string>\",\n    \"quis_88\": \"<string>\",\n    \"reprehenderit_89\": \"<string>\"\n  },\n  \"serialPipeline\": {\n    \"stages\": [\n      {\n        \"targetId\": \"<string>\",\n        \"profiles\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"strategy\": {\n          \"standard\": {\n            \"verify\": \"<boolean>\"\n          },\n          \"canary\": {\n            \"percentages\": [\n              \"<integer>\",\n              \"<integer>\"\n            ],\n            \"verify\": \"<boolean>\"\n          }\n        }\n      },\n      {\n        \"targetId\": \"<string>\",\n        \"profiles\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"strategy\": {\n          \"standard\": {\n            \"verify\": \"<boolean>\"\n          },\n          \"canary\": {\n            \"percentages\": [\n              \"<integer>\",\n              \"<integer>\"\n            ],\n            \"verify\": \"<boolean>\"\n          }\n        }\n      }\n    ]\n  },\n  \"condition\": {\n    \"pipelineReadyCondition\": {\n      \"status\": \"<boolean>\"\n    },\n    \"targetsPresentCondition\": {\n      \"status\": \"<boolean>\",\n      \"missingTargets\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  },\n  \"createTime\": \"<dateTime>\",\n  \"updateTime\": \"<dateTime>\"\n}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/projects/:projectId/locations/:location/deliveryPipelines/:pipelineId?updateMask=<string>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "projects",
+                                        ":projectId",
+                                        "locations",
+                                        ":location",
+                                        "deliveryPipelines",
+                                        ":pipelineId"
+                                      ],
+                                      "query": [
+                                        {
+                                          "key": "updateMask",
+                                          "value": "<string>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "projectId"
+                                        },
+                                        {
+                                          "key": "location"
+                                        },
+                                        {
+                                          "key": "pipelineId"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"name\": \"<string>\",\n  \"done\": \"<boolean>\"\n}",
+                                  "createdAt": "2026-07-28T01:47:05.000Z",
+                                  "updatedAt": "2026-07-28T01:47:05.000Z",
+                                  "uid": "35240-df16ab0a-1eb2-42b4-b7c8-764ac5edce77"
+                                }
+                              ],
+                              "createdAt": "2026-07-28T01:47:05.000Z",
+                              "updatedAt": "2026-07-28T01:47:05.000Z",
+                              "uid": "35240-cbba684c-fdfe-4d79-8f49-bea58679e2c6"
+                            },
+                            {
+                              "name": "Google Cloud Deploy Delete a delivery pipeline",
+                              "id": "13aade12-d2e7-4629-bb97-663482e57cb6",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "method": "DELETE",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/projects/:projectId/locations/:location/deliveryPipelines/:pipelineId",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "projects",
+                                    ":projectId",
+                                    "locations",
+                                    ":location",
+                                    "deliveryPipelines",
+                                    ":pipelineId"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "58b22cb5-1127-41e8-bb28-4e3e0099f531",
+                                      "key": "projectId",
+                                      "value": "<string>",
+                                      "description": "(Required) "
+                                    },
+                                    {
+                                      "id": "0a4b3e7f-ff1d-45df-9730-855a44befb27",
+                                      "key": "location",
+                                      "value": "<string>",
+                                      "description": "(Required) "
+                                    },
+                                    {
+                                      "id": "1dace6a4-cf96-4af6-a319-dc6feec97cc8",
+                                      "key": "pipelineId",
+                                      "value": "<string>",
+                                      "description": "(Required) "
+                                    }
+                                  ]
+                                },
+                                "description": "Deletes a single delivery pipeline."
+                              },
+                              "response": [
+                                {
+                                  "id": "817d6e52-c404-49e2-9115-dc2bd59d37de",
+                                  "name": "Successful response",
+                                  "originalRequest": {
+                                    "method": "DELETE",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: oauth2",
+                                        "key": "Authorization",
+                                        "value": "<token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/projects/:projectId/locations/:location/deliveryPipelines/:pipelineId",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "projects",
+                                        ":projectId",
+                                        "locations",
+                                        ":location",
+                                        "deliveryPipelines",
+                                        ":pipelineId"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "projectId"
+                                        },
+                                        {
+                                          "key": "location"
+                                        },
+                                        {
+                                          "key": "pipelineId"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"name\": \"<string>\",\n  \"done\": \"<boolean>\"\n}",
+                                  "createdAt": "2026-07-28T01:47:05.000Z",
+                                  "updatedAt": "2026-07-28T01:47:05.000Z",
+                                  "uid": "35240-817d6e52-c404-49e2-9115-dc2bd59d37de"
+                                }
+                              ],
+                              "createdAt": "2026-07-28T01:47:05.000Z",
+                              "updatedAt": "2026-07-28T01:47:05.000Z",
+                              "uid": "35240-13aade12-d2e7-4629-bb97-663482e57cb6"
+                            }
+                          ],
+                          "id": "45f386e1-637d-464a-9bf1-ddf9d0090d6d",
+                          "createdAt": "2026-07-28T01:47:04.000Z",
+                          "updatedAt": "2026-07-28T01:47:04.000Z",
+                          "uid": "35240-45f386e1-637d-464a-9bf1-ddf9d0090d6d"
+                        },
+                        {
+                          "name": "Google Cloud Deploy List delivery pipelines",
+                          "id": "c8592c12-97a9-487f-befe-9f7037c17b84",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/projects/:projectId/locations/:location/deliveryPipelines?pageSize=<integer>&pageToken=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "projects",
+                                ":projectId",
+                                "locations",
+                                ":location",
+                                "deliveryPipelines"
+                              ],
+                              "query": [
+                                {
+                                  "key": "pageSize",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "key": "pageToken",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "id": "1e56e4f6-0367-4de4-bdb8-8eff8499e795",
+                                  "key": "projectId",
+                                  "value": "<string>",
+                                  "description": "(Required) "
+                                },
+                                {
+                                  "id": "0a2ed30a-2bd4-4f17-8f5c-dde5e2857241",
+                                  "key": "location",
+                                  "value": "<string>",
+                                  "description": "(Required) "
+                                }
+                              ]
+                            },
+                            "description": "Lists delivery pipelines in a given project and location."
+                          },
+                          "response": [
+                            {
+                              "id": "e9b6d85b-6b95-4b58-807f-84ae9cabc82b",
+                              "name": "Successful response",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/projects/:projectId/locations/:location/deliveryPipelines?pageSize=<integer>&pageToken=<string>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "projects",
+                                    ":projectId",
+                                    "locations",
+                                    ":location",
+                                    "deliveryPipelines"
+                                  ],
+                                  "query": [
+                                    {
+                                      "key": "pageSize",
+                                      "value": "<integer>"
+                                    },
+                                    {
+                                      "key": "pageToken",
+                                      "value": "<string>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "projectId"
+                                    },
+                                    {
+                                      "key": "location"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"deliveryPipelines\": [\n    {\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"annotations\": {\n        \"sit_e\": \"<string>\"\n      },\n      \"labels\": {\n        \"inf78\": \"<string>\",\n        \"esse_0\": \"<string>\"\n      },\n      \"serialPipeline\": {\n        \"stages\": [\n          {\n            \"targetId\": \"<string>\",\n            \"profiles\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"strategy\": {\n              \"standard\": {\n                \"verify\": \"<boolean>\"\n              },\n              \"canary\": {\n                \"percentages\": [\n                  \"<integer>\",\n                  \"<integer>\"\n                ],\n                \"verify\": \"<boolean>\"\n              }\n            }\n          },\n          {\n            \"targetId\": \"<string>\",\n            \"profiles\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"strategy\": {\n              \"standard\": {\n                \"verify\": \"<boolean>\"\n              },\n              \"canary\": {\n                \"percentages\": [\n                  \"<integer>\",\n                  \"<integer>\"\n                ],\n                \"verify\": \"<boolean>\"\n              }\n            }\n          }\n        ]\n      },\n      \"condition\": {\n        \"pipelineReadyCondition\": {\n          \"status\": \"<boolean>\"\n        },\n        \"targetsPresentCondition\": {\n          \"status\": \"<boolean>\",\n          \"missingTargets\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      },\n      \"createTime\": \"<dateTime>\",\n      \"updateTime\": \"<dateTime>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"annotations\": {\n        \"veniam65_\": \"<string>\"\n      },\n      \"labels\": {\n        \"sint_4b3\": \"<string>\",\n        \"sunta\": \"<string>\"\n      },\n      \"serialPipeline\": {\n        \"stages\": [\n          {\n            \"targetId\": \"<string>\",\n            \"profiles\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"strategy\": {\n              \"standard\": {\n                \"verify\": \"<boolean>\"\n              },\n              \"canary\": {\n                \"percentages\": [\n                  \"<integer>\",\n                  \"<integer>\"\n                ],\n                \"verify\": \"<boolean>\"\n              }\n            }\n          },\n          {\n            \"targetId\": \"<string>\",\n            \"profiles\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"strategy\": {\n              \"standard\": {\n                \"verify\": \"<boolean>\"\n              },\n              \"canary\": {\n                \"percentages\": [\n                  \"<integer>\",\n                  \"<integer>\"\n                ],\n                \"verify\": \"<boolean>\"\n              }\n            }\n          }\n        ]\n      },\n      \"condition\": {\n        \"pipelineReadyCondition\": {\n          \"status\": \"<boolean>\"\n        },\n        \"targetsPresentCondition\": {\n          \"status\": \"<boolean>\",\n          \"missingTargets\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      },\n      \"createTime\": \"<dateTime>\",\n      \"updateTime\": \"<dateTime>\"\n    }\n  ],\n  \"nextPageToken\": \"<string>\"\n}",
+                              "createdAt": "2026-07-28T01:47:05.000Z",
+                              "updatedAt": "2026-07-28T01:47:05.000Z",
+                              "uid": "35240-e9b6d85b-6b95-4b58-807f-84ae9cabc82b"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T01:47:05.000Z",
+                          "updatedAt": "2026-07-28T01:47:05.000Z",
+                          "uid": "35240-c8592c12-97a9-487f-befe-9f7037c17b84"
+                        },
+                        {
+                          "name": "Google Cloud Deploy Create a delivery pipeline",
+                          "id": "8142f99e-5e93-4a80-b479-44dbbd399dcd",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"annotations\": {\n    \"enim85d\": \"<string>\"\n  },\n  \"labels\": {\n    \"aute8e_\": \"<string>\",\n    \"quis_88\": \"<string>\",\n    \"reprehenderit_89\": \"<string>\"\n  },\n  \"serialPipeline\": {\n    \"stages\": [\n      {\n        \"targetId\": \"<string>\",\n        \"profiles\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"strategy\": {\n          \"standard\": {\n            \"verify\": \"<boolean>\"\n          },\n          \"canary\": {\n            \"percentages\": [\n              \"<integer>\",\n              \"<integer>\"\n            ],\n            \"verify\": \"<boolean>\"\n          }\n        }\n      },\n      {\n        \"targetId\": \"<string>\",\n        \"profiles\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"strategy\": {\n          \"standard\": {\n            \"verify\": \"<boolean>\"\n          },\n          \"canary\": {\n            \"percentages\": [\n              \"<integer>\",\n              \"<integer>\"\n            ],\n            \"verify\": \"<boolean>\"\n          }\n        }\n      }\n    ]\n  },\n  \"condition\": {\n    \"pipelineReadyCondition\": {\n      \"status\": \"<boolean>\"\n    },\n    \"targetsPresentCondition\": {\n      \"status\": \"<boolean>\",\n      \"missingTargets\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  },\n  \"createTime\": \"<dateTime>\",\n  \"updateTime\": \"<dateTime>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/projects/:projectId/locations/:location/deliveryPipelines?deliveryPipelineId=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "projects",
+                                ":projectId",
+                                "locations",
+                                ":location",
+                                "deliveryPipelines"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) ",
+                                  "key": "deliveryPipelineId",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "id": "d07ca84d-f54e-4dcb-bd50-ab5b0f13a9fe",
+                                  "key": "projectId",
+                                  "value": "<string>",
+                                  "description": "(Required) "
+                                },
+                                {
+                                  "id": "8f54c465-2fc7-4df6-87c2-a8faeafaa618",
+                                  "key": "location",
+                                  "value": "<string>",
+                                  "description": "(Required) "
+                                }
+                              ]
+                            },
+                            "description": "Creates a new delivery pipeline."
+                          },
+                          "response": [
+                            {
+                              "id": "1d89107a-1a0a-4164-a97f-d27bd1e28d45",
+                              "name": "Successful response",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"annotations\": {\n    \"enim85d\": \"<string>\"\n  },\n  \"labels\": {\n    \"aute8e_\": \"<string>\",\n    \"quis_88\": \"<string>\",\n    \"reprehenderit_89\": \"<string>\"\n  },\n  \"serialPipeline\": {\n    \"stages\": [\n      {\n        \"targetId\": \"<string>\",\n        \"profiles\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"strategy\": {\n          \"standard\": {\n            \"verify\": \"<boolean>\"\n          },\n          \"canary\": {\n            \"percentages\": [\n              \"<integer>\",\n              \"<integer>\"\n            ],\n            \"verify\": \"<boolean>\"\n          }\n        }\n      },\n      {\n        \"targetId\": \"<string>\",\n        \"profiles\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"strategy\": {\n          \"standard\": {\n            \"verify\": \"<boolean>\"\n          },\n          \"canary\": {\n            \"percentages\": [\n              \"<integer>\",\n              \"<integer>\"\n            ],\n            \"verify\": \"<boolean>\"\n          }\n        }\n      }\n    ]\n  },\n  \"condition\": {\n    \"pipelineReadyCondition\": {\n      \"status\": \"<boolean>\"\n    },\n    \"targetsPresentCondition\": {\n      \"status\": \"<boolean>\",\n      \"missingTargets\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  },\n  \"createTime\": \"<dateTime>\",\n  \"updateTime\": \"<dateTime>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/projects/:projectId/locations/:location/deliveryPipelines?deliveryPipelineId=<string>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "projects",
+                                    ":projectId",
+                                    "locations",
+                                    ":location",
+                                    "deliveryPipelines"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "(Required) ",
+                                      "key": "deliveryPipelineId",
+                                      "value": "<string>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "projectId"
+                                    },
+                                    {
+                                      "key": "location"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"name\": \"<string>\",\n  \"done\": \"<boolean>\"\n}",
+                              "createdAt": "2026-07-28T01:47:05.000Z",
+                              "updatedAt": "2026-07-28T01:47:05.000Z",
+                              "uid": "35240-1d89107a-1a0a-4164-a97f-d27bd1e28d45"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T01:47:05.000Z",
+                          "updatedAt": "2026-07-28T01:47:05.000Z",
+                          "uid": "35240-8142f99e-5e93-4a80-b479-44dbbd399dcd"
+                        }
+                      ],
+                      "id": "57e9b6cb-4955-4675-a7ff-7e2ceb57ed7f",
+                      "createdAt": "2026-07-28T01:47:04.000Z",
+                      "updatedAt": "2026-07-28T01:47:04.000Z",
+                      "uid": "35240-57e9b6cb-4955-4675-a7ff-7e2ceb57ed7f"
+                    }
+                  ],
+                  "id": "971ed02d-c6d5-4b9a-8257-e2e87252d9c0",
+                  "createdAt": "2026-07-28T01:47:04.000Z",
+                  "updatedAt": "2026-07-28T01:47:04.000Z",
+                  "uid": "35240-971ed02d-c6d5-4b9a-8257-e2e87252d9c0"
+                }
+              ],
+              "id": "1617c830-297b-415e-ab5d-c03c5e27f27f",
+              "createdAt": "2026-07-28T01:47:04.000Z",
+              "updatedAt": "2026-07-28T01:47:04.000Z",
+              "uid": "35240-1617c830-297b-415e-ab5d-c03c5e27f27f"
+            }
+          ],
+          "id": "0021c0d8-2bab-493e-b440-bda2bbcf6a13",
+          "createdAt": "2026-07-28T01:47:04.000Z",
+          "updatedAt": "2026-07-28T01:47:04.000Z",
+          "uid": "35240-0021c0d8-2bab-493e-b440-bda2bbcf6a13"
+        }
+      ],
+      "id": "0a81001a-b8bd-4c09-9a6e-5c7d7a1794f0",
+      "createdAt": "2026-07-28T01:47:04.000Z",
+      "updatedAt": "2026-07-28T01:47:04.000Z",
+      "uid": "35240-0a81001a-b8bd-4c09-9a6e-5c7d7a1794f0"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "https://www.googleapis.com/auth/cloud-platform",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://oauth2.googleapis.com/token",
+        "type": "string"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://accounts.google.com/o/oauth2/auth",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://clouddeploy.googleapis.com/v1"
+    }
+  ]
+}

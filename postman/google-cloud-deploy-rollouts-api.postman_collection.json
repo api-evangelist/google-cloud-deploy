@@ -1,0 +1,605 @@
+{
+  "info": {
+    "_postman_id": "db3fe0c6-741e-4406-8ab4-8314ca87dfd1",
+    "name": "Google Cloud Deploy DeliveryPipelines Rollouts API",
+    "description": "The Cloud Deploy API provides programmatic access to manage delivery pipelines, targets, releases, and rollouts for continuous delivery workflows on Google Cloud. It supports promoting releases through target environments with approval gates and rollback capabilities.\n\nContact Support:\n Name: Google Cloud Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:47:20.000Z",
+    "updatedAt": "2026-07-28T01:47:20.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-db3fe0c6-741e-4406-8ab4-8314ca87dfd1"
+  },
+  "item": [
+    {
+      "name": "projects",
+      "item": [
+        {
+          "name": "{projectId}",
+          "item": [
+            {
+              "name": "locations",
+              "item": [
+                {
+                  "name": "{location}",
+                  "item": [
+                    {
+                      "name": "deliveryPipelines",
+                      "item": [
+                        {
+                          "name": "{pipelineId}",
+                          "item": [
+                            {
+                              "name": "releases",
+                              "item": [
+                                {
+                                  "name": "{releaseId}",
+                                  "item": [
+                                    {
+                                      "name": "rollouts",
+                                      "item": [
+                                        {
+                                          "name": "{rolloutId}:approve",
+                                          "item": [
+                                            {
+                                              "name": "Google Cloud Deploy Approve a rollout",
+                                              "id": "23561bd5-7926-454c-9504-1993bda9852d",
+                                              "protocolProfileBehavior": {
+                                                "disableBodyPruning": true
+                                              },
+                                              "request": {
+                                                "method": "POST",
+                                                "header": [
+                                                  {
+                                                    "key": "Content-Type",
+                                                    "value": "application/json"
+                                                  }
+                                                ],
+                                                "body": {
+                                                  "mode": "raw",
+                                                  "raw": "{\n  \"approved\": \"<boolean>\"\n}",
+                                                  "options": {
+                                                    "raw": {
+                                                      "headerFamily": "json",
+                                                      "language": "json"
+                                                    }
+                                                  }
+                                                },
+                                                "url": {
+                                                  "raw": "{{baseUrl}}/projects/:projectId/locations/:location/deliveryPipelines/:pipelineId/releases/:releaseId/rollouts/{{rolloutId}}:approve",
+                                                  "host": [
+                                                    "{{baseUrl}}"
+                                                  ],
+                                                  "path": [
+                                                    "projects",
+                                                    ":projectId",
+                                                    "locations",
+                                                    ":location",
+                                                    "deliveryPipelines",
+                                                    ":pipelineId",
+                                                    "releases",
+                                                    ":releaseId",
+                                                    "rollouts",
+                                                    "{{rolloutId}}:approve"
+                                                  ],
+                                                  "variable": [
+                                                    {
+                                                      "id": "2f4f0238-0e67-4875-b6fe-5daecf933749",
+                                                      "key": "projectId",
+                                                      "value": "<string>",
+                                                      "description": "(Required) "
+                                                    },
+                                                    {
+                                                      "id": "9feaacef-94d1-444b-8a78-9e21608f9f42",
+                                                      "key": "location",
+                                                      "value": "<string>",
+                                                      "description": "(Required) "
+                                                    },
+                                                    {
+                                                      "id": "baf19ea4-74bf-4e7e-978a-066481298466",
+                                                      "key": "pipelineId",
+                                                      "value": "<string>",
+                                                      "description": "(Required) "
+                                                    },
+                                                    {
+                                                      "id": "dc17c0a5-01cd-4c0f-bb7e-10b6bba4bad5",
+                                                      "key": "releaseId",
+                                                      "value": "<string>",
+                                                      "description": "(Required) "
+                                                    }
+                                                  ]
+                                                },
+                                                "description": "Approves a rollout that requires approval."
+                                              },
+                                              "response": [
+                                                {
+                                                  "id": "895c56f9-226d-4bd0-9822-e7929efee268",
+                                                  "name": "Successful response",
+                                                  "originalRequest": {
+                                                    "method": "POST",
+                                                    "header": [
+                                                      {
+                                                        "key": "Content-Type",
+                                                        "value": "application/json"
+                                                      },
+                                                      {
+                                                        "description": "Added as a part of security scheme: oauth2",
+                                                        "key": "Authorization",
+                                                        "value": "<token>"
+                                                      }
+                                                    ],
+                                                    "body": {
+                                                      "mode": "raw",
+                                                      "raw": "{\n  \"approved\": \"<boolean>\"\n}",
+                                                      "options": {
+                                                        "raw": {
+                                                          "headerFamily": "json",
+                                                          "language": "json"
+                                                        }
+                                                      }
+                                                    },
+                                                    "url": {
+                                                      "raw": "{{baseUrl}}/projects/:projectId/locations/:location/deliveryPipelines/:pipelineId/releases/:releaseId/rollouts/{{rolloutId}}:approve",
+                                                      "host": [
+                                                        "{{baseUrl}}"
+                                                      ],
+                                                      "path": [
+                                                        "projects",
+                                                        ":projectId",
+                                                        "locations",
+                                                        ":location",
+                                                        "deliveryPipelines",
+                                                        ":pipelineId",
+                                                        "releases",
+                                                        ":releaseId",
+                                                        "rollouts",
+                                                        "{{rolloutId}}:approve"
+                                                      ],
+                                                      "variable": [
+                                                        {
+                                                          "key": "projectId"
+                                                        },
+                                                        {
+                                                          "key": "location"
+                                                        },
+                                                        {
+                                                          "key": "pipelineId"
+                                                        },
+                                                        {
+                                                          "key": "releaseId"
+                                                        }
+                                                      ]
+                                                    }
+                                                  },
+                                                  "status": "OK",
+                                                  "code": 200,
+                                                  "_postman_previewlanguage": "text",
+                                                  "header": [],
+                                                  "cookie": [],
+                                                  "responseTime": null,
+                                                  "body": null,
+                                                  "createdAt": "2026-07-28T01:47:21.000Z",
+                                                  "updatedAt": "2026-07-28T01:47:21.000Z",
+                                                  "uid": "35240-895c56f9-226d-4bd0-9822-e7929efee268"
+                                                }
+                                              ],
+                                              "createdAt": "2026-07-28T01:47:21.000Z",
+                                              "updatedAt": "2026-07-28T01:47:21.000Z",
+                                              "uid": "35240-23561bd5-7926-454c-9504-1993bda9852d"
+                                            }
+                                          ],
+                                          "id": "13d04f30-23c9-460a-bbd3-b3c410f2eeb4",
+                                          "createdAt": "2026-07-28T01:47:21.000Z",
+                                          "updatedAt": "2026-07-28T01:47:21.000Z",
+                                          "uid": "35240-13d04f30-23c9-460a-bbd3-b3c410f2eeb4"
+                                        },
+                                        {
+                                          "name": "Google Cloud Deploy List rollouts",
+                                          "id": "2a710f86-679f-464a-969f-6cc891ccfd7d",
+                                          "protocolProfileBehavior": {
+                                            "disableBodyPruning": true
+                                          },
+                                          "request": {
+                                            "method": "GET",
+                                            "header": [
+                                              {
+                                                "key": "Accept",
+                                                "value": "application/json"
+                                              }
+                                            ],
+                                            "url": {
+                                              "raw": "{{baseUrl}}/projects/:projectId/locations/:location/deliveryPipelines/:pipelineId/releases/:releaseId/rollouts?pageSize=<integer>&pageToken=<string>",
+                                              "host": [
+                                                "{{baseUrl}}"
+                                              ],
+                                              "path": [
+                                                "projects",
+                                                ":projectId",
+                                                "locations",
+                                                ":location",
+                                                "deliveryPipelines",
+                                                ":pipelineId",
+                                                "releases",
+                                                ":releaseId",
+                                                "rollouts"
+                                              ],
+                                              "query": [
+                                                {
+                                                  "key": "pageSize",
+                                                  "value": "<integer>"
+                                                },
+                                                {
+                                                  "key": "pageToken",
+                                                  "value": "<string>"
+                                                }
+                                              ],
+                                              "variable": [
+                                                {
+                                                  "id": "26cc4742-4c5c-4bb2-b431-84160eede8fd",
+                                                  "key": "projectId",
+                                                  "value": "<string>",
+                                                  "description": "(Required) "
+                                                },
+                                                {
+                                                  "id": "dd04a2fd-1fbc-406a-b110-83794de63442",
+                                                  "key": "location",
+                                                  "value": "<string>",
+                                                  "description": "(Required) "
+                                                },
+                                                {
+                                                  "id": "e6bbcb52-41dc-414a-aa55-4ff23fddbefa",
+                                                  "key": "pipelineId",
+                                                  "value": "<string>",
+                                                  "description": "(Required) "
+                                                },
+                                                {
+                                                  "id": "29a960d2-4cfd-419f-87e6-683cec9b27d2",
+                                                  "key": "releaseId",
+                                                  "value": "<string>",
+                                                  "description": "(Required) "
+                                                }
+                                              ]
+                                            },
+                                            "description": "Lists rollouts in a given release."
+                                          },
+                                          "response": [
+                                            {
+                                              "id": "b36e2b72-3fab-4b26-8f8b-db8206238dde",
+                                              "name": "Successful response",
+                                              "originalRequest": {
+                                                "method": "GET",
+                                                "header": [
+                                                  {
+                                                    "key": "Accept",
+                                                    "value": "application/json"
+                                                  },
+                                                  {
+                                                    "description": "Added as a part of security scheme: oauth2",
+                                                    "key": "Authorization",
+                                                    "value": "<token>"
+                                                  }
+                                                ],
+                                                "url": {
+                                                  "raw": "{{baseUrl}}/projects/:projectId/locations/:location/deliveryPipelines/:pipelineId/releases/:releaseId/rollouts?pageSize=<integer>&pageToken=<string>",
+                                                  "host": [
+                                                    "{{baseUrl}}"
+                                                  ],
+                                                  "path": [
+                                                    "projects",
+                                                    ":projectId",
+                                                    "locations",
+                                                    ":location",
+                                                    "deliveryPipelines",
+                                                    ":pipelineId",
+                                                    "releases",
+                                                    ":releaseId",
+                                                    "rollouts"
+                                                  ],
+                                                  "query": [
+                                                    {
+                                                      "key": "pageSize",
+                                                      "value": "<integer>"
+                                                    },
+                                                    {
+                                                      "key": "pageToken",
+                                                      "value": "<string>"
+                                                    }
+                                                  ],
+                                                  "variable": [
+                                                    {
+                                                      "key": "projectId"
+                                                    },
+                                                    {
+                                                      "key": "location"
+                                                    },
+                                                    {
+                                                      "key": "pipelineId"
+                                                    },
+                                                    {
+                                                      "key": "releaseId"
+                                                    }
+                                                  ]
+                                                }
+                                              },
+                                              "status": "OK",
+                                              "code": 200,
+                                              "_postman_previewlanguage": "json",
+                                              "header": [
+                                                {
+                                                  "key": "Content-Type",
+                                                  "value": "application/json"
+                                                }
+                                              ],
+                                              "cookie": [],
+                                              "responseTime": null,
+                                              "body": "{\n  \"rollouts\": [\n    {\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"targetId\": \"<string>\",\n      \"approvalState\": \"APPROVED\",\n      \"state\": \"CANCELLED\",\n      \"deployStartTime\": \"<dateTime>\",\n      \"deployEndTime\": \"<dateTime>\",\n      \"createTime\": \"<dateTime>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"targetId\": \"<string>\",\n      \"approvalState\": \"DOES_NOT_NEED_APPROVAL\",\n      \"state\": \"CANCELLING\",\n      \"deployStartTime\": \"<dateTime>\",\n      \"deployEndTime\": \"<dateTime>\",\n      \"createTime\": \"<dateTime>\"\n    }\n  ],\n  \"nextPageToken\": \"<string>\"\n}",
+                                              "createdAt": "2026-07-28T01:47:21.000Z",
+                                              "updatedAt": "2026-07-28T01:47:21.000Z",
+                                              "uid": "35240-b36e2b72-3fab-4b26-8f8b-db8206238dde"
+                                            }
+                                          ],
+                                          "createdAt": "2026-07-28T01:47:21.000Z",
+                                          "updatedAt": "2026-07-28T01:47:21.000Z",
+                                          "uid": "35240-2a710f86-679f-464a-969f-6cc891ccfd7d"
+                                        },
+                                        {
+                                          "name": "Google Cloud Deploy Create a rollout",
+                                          "id": "6d22a589-8f29-4549-8ec0-2cadf5002ea0",
+                                          "protocolProfileBehavior": {
+                                            "disableBodyPruning": true
+                                          },
+                                          "request": {
+                                            "method": "POST",
+                                            "header": [
+                                              {
+                                                "key": "Content-Type",
+                                                "value": "application/json"
+                                              },
+                                              {
+                                                "key": "Accept",
+                                                "value": "application/json"
+                                              }
+                                            ],
+                                            "body": {
+                                              "mode": "raw",
+                                              "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"targetId\": \"<string>\",\n  \"approvalState\": \"REJECTED\",\n  \"state\": \"PENDING_RELEASE\",\n  \"deployStartTime\": \"<dateTime>\",\n  \"deployEndTime\": \"<dateTime>\",\n  \"createTime\": \"<dateTime>\"\n}",
+                                              "options": {
+                                                "raw": {
+                                                  "headerFamily": "json",
+                                                  "language": "json"
+                                                }
+                                              }
+                                            },
+                                            "url": {
+                                              "raw": "{{baseUrl}}/projects/:projectId/locations/:location/deliveryPipelines/:pipelineId/releases/:releaseId/rollouts?rolloutId=<string>",
+                                              "host": [
+                                                "{{baseUrl}}"
+                                              ],
+                                              "path": [
+                                                "projects",
+                                                ":projectId",
+                                                "locations",
+                                                ":location",
+                                                "deliveryPipelines",
+                                                ":pipelineId",
+                                                "releases",
+                                                ":releaseId",
+                                                "rollouts"
+                                              ],
+                                              "query": [
+                                                {
+                                                  "description": "(Required) ",
+                                                  "key": "rolloutId",
+                                                  "value": "<string>"
+                                                }
+                                              ],
+                                              "variable": [
+                                                {
+                                                  "id": "dd3cbdde-15f8-458f-b6dc-cbeb0745a7b2",
+                                                  "key": "projectId",
+                                                  "value": "<string>",
+                                                  "description": "(Required) "
+                                                },
+                                                {
+                                                  "id": "f8b95957-fdd8-4709-8578-5f97cd87ba48",
+                                                  "key": "location",
+                                                  "value": "<string>",
+                                                  "description": "(Required) "
+                                                },
+                                                {
+                                                  "id": "2d6afd79-9003-49e6-89f1-7ca4155a7e5e",
+                                                  "key": "pipelineId",
+                                                  "value": "<string>",
+                                                  "description": "(Required) "
+                                                },
+                                                {
+                                                  "id": "4bf35252-3f1a-48a8-b2df-0826be551868",
+                                                  "key": "releaseId",
+                                                  "value": "<string>",
+                                                  "description": "(Required) "
+                                                }
+                                              ]
+                                            },
+                                            "description": "Creates a new rollout in a given release."
+                                          },
+                                          "response": [
+                                            {
+                                              "id": "097e792b-8e44-40b0-89e3-a2b44b8054eb",
+                                              "name": "Successful response",
+                                              "originalRequest": {
+                                                "method": "POST",
+                                                "header": [
+                                                  {
+                                                    "key": "Content-Type",
+                                                    "value": "application/json"
+                                                  },
+                                                  {
+                                                    "key": "Accept",
+                                                    "value": "application/json"
+                                                  },
+                                                  {
+                                                    "description": "Added as a part of security scheme: oauth2",
+                                                    "key": "Authorization",
+                                                    "value": "<token>"
+                                                  }
+                                                ],
+                                                "body": {
+                                                  "mode": "raw",
+                                                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"targetId\": \"<string>\",\n  \"approvalState\": \"REJECTED\",\n  \"state\": \"PENDING_RELEASE\",\n  \"deployStartTime\": \"<dateTime>\",\n  \"deployEndTime\": \"<dateTime>\",\n  \"createTime\": \"<dateTime>\"\n}",
+                                                  "options": {
+                                                    "raw": {
+                                                      "headerFamily": "json",
+                                                      "language": "json"
+                                                    }
+                                                  }
+                                                },
+                                                "url": {
+                                                  "raw": "{{baseUrl}}/projects/:projectId/locations/:location/deliveryPipelines/:pipelineId/releases/:releaseId/rollouts?rolloutId=<string>",
+                                                  "host": [
+                                                    "{{baseUrl}}"
+                                                  ],
+                                                  "path": [
+                                                    "projects",
+                                                    ":projectId",
+                                                    "locations",
+                                                    ":location",
+                                                    "deliveryPipelines",
+                                                    ":pipelineId",
+                                                    "releases",
+                                                    ":releaseId",
+                                                    "rollouts"
+                                                  ],
+                                                  "query": [
+                                                    {
+                                                      "description": "(Required) ",
+                                                      "key": "rolloutId",
+                                                      "value": "<string>"
+                                                    }
+                                                  ],
+                                                  "variable": [
+                                                    {
+                                                      "key": "projectId"
+                                                    },
+                                                    {
+                                                      "key": "location"
+                                                    },
+                                                    {
+                                                      "key": "pipelineId"
+                                                    },
+                                                    {
+                                                      "key": "releaseId"
+                                                    }
+                                                  ]
+                                                }
+                                              },
+                                              "status": "OK",
+                                              "code": 200,
+                                              "_postman_previewlanguage": "json",
+                                              "header": [
+                                                {
+                                                  "key": "Content-Type",
+                                                  "value": "application/json"
+                                                }
+                                              ],
+                                              "cookie": [],
+                                              "responseTime": null,
+                                              "body": "{\n  \"name\": \"<string>\",\n  \"done\": \"<boolean>\"\n}",
+                                              "createdAt": "2026-07-28T01:47:21.000Z",
+                                              "updatedAt": "2026-07-28T01:47:21.000Z",
+                                              "uid": "35240-097e792b-8e44-40b0-89e3-a2b44b8054eb"
+                                            }
+                                          ],
+                                          "createdAt": "2026-07-28T01:47:21.000Z",
+                                          "updatedAt": "2026-07-28T01:47:21.000Z",
+                                          "uid": "35240-6d22a589-8f29-4549-8ec0-2cadf5002ea0"
+                                        }
+                                      ],
+                                      "id": "bf28c0de-553f-4386-b702-a6f30fcb3b3a",
+                                      "createdAt": "2026-07-28T01:47:21.000Z",
+                                      "updatedAt": "2026-07-28T01:47:21.000Z",
+                                      "uid": "35240-bf28c0de-553f-4386-b702-a6f30fcb3b3a"
+                                    }
+                                  ],
+                                  "id": "4eb47ad0-7980-4554-ab01-7508e8e6ee18",
+                                  "createdAt": "2026-07-28T01:47:21.000Z",
+                                  "updatedAt": "2026-07-28T01:47:21.000Z",
+                                  "uid": "35240-4eb47ad0-7980-4554-ab01-7508e8e6ee18"
+                                }
+                              ],
+                              "id": "5779a62a-7f91-4e25-82d4-5af63d83b403",
+                              "createdAt": "2026-07-28T01:47:21.000Z",
+                              "updatedAt": "2026-07-28T01:47:21.000Z",
+                              "uid": "35240-5779a62a-7f91-4e25-82d4-5af63d83b403"
+                            }
+                          ],
+                          "id": "ac9f61cf-8862-46a9-bbc2-851e3f10f578",
+                          "createdAt": "2026-07-28T01:47:21.000Z",
+                          "updatedAt": "2026-07-28T01:47:21.000Z",
+                          "uid": "35240-ac9f61cf-8862-46a9-bbc2-851e3f10f578"
+                        }
+                      ],
+                      "id": "7dcada3a-ff95-4ce8-b726-3a3c7777ef9c",
+                      "createdAt": "2026-07-28T01:47:21.000Z",
+                      "updatedAt": "2026-07-28T01:47:21.000Z",
+                      "uid": "35240-7dcada3a-ff95-4ce8-b726-3a3c7777ef9c"
+                    }
+                  ],
+                  "id": "dc0c9999-1173-4994-80be-f115daa66dc8",
+                  "createdAt": "2026-07-28T01:47:21.000Z",
+                  "updatedAt": "2026-07-28T01:47:21.000Z",
+                  "uid": "35240-dc0c9999-1173-4994-80be-f115daa66dc8"
+                }
+              ],
+              "id": "ff5e4952-82a7-4b95-97d2-a0f1a1f9c328",
+              "createdAt": "2026-07-28T01:47:21.000Z",
+              "updatedAt": "2026-07-28T01:47:21.000Z",
+              "uid": "35240-ff5e4952-82a7-4b95-97d2-a0f1a1f9c328"
+            }
+          ],
+          "id": "8311ff89-fc9f-4de2-b671-d11b191a9a57",
+          "createdAt": "2026-07-28T01:47:21.000Z",
+          "updatedAt": "2026-07-28T01:47:21.000Z",
+          "uid": "35240-8311ff89-fc9f-4de2-b671-d11b191a9a57"
+        }
+      ],
+      "id": "0e66f346-719c-4c22-8a5c-c581f726f84c",
+      "createdAt": "2026-07-28T01:47:21.000Z",
+      "updatedAt": "2026-07-28T01:47:21.000Z",
+      "uid": "35240-0e66f346-719c-4c22-8a5c-c581f726f84c"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "https://www.googleapis.com/auth/cloud-platform",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://oauth2.googleapis.com/token",
+        "type": "string"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://accounts.google.com/o/oauth2/auth",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://clouddeploy.googleapis.com/v1"
+    },
+    {
+      "key": "rolloutId",
+      "value": "<string>"
+    }
+  ]
+}
