@@ -1,0 +1,766 @@
+{
+  "item": [
+    {
+      "id": "3a4b7eae-4867-4203-a62b-ccd14e47bb3f",
+      "name": "DeliveryPipelines",
+      "description": {
+        "content": "Operations for managing delivery pipelines",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b3604657-7283-45d9-bbdb-b9c1ce9dc1c9",
+          "name": "Google Cloud Deploy List delivery pipelines",
+          "request": {
+            "name": "Google Cloud Deploy List delivery pipelines",
+            "description": {
+              "content": "Lists delivery pipelines in a given project and location.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "projects",
+                ":projectId",
+                "locations",
+                ":location",
+                "deliveryPipelines"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageToken",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "projectId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "location",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0debb7f2-8e87-45aa-a8d9-92d98e33f291",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectId",
+                    "locations",
+                    ":location",
+                    "deliveryPipelines"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "location",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"deliveryPipelines\": [\n    {\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"annotations\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\"\n      },\n      \"labels\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\",\n        \"key_2\": \"string\",\n        \"key_3\": \"string\"\n      },\n      \"serialPipeline\": {\n        \"stages\": [\n          {\n            \"targetId\": \"string\",\n            \"profiles\": [\n              \"string\",\n              \"string\"\n            ],\n            \"strategy\": {\n              \"standard\": {\n                \"verify\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              },\n              \"canary\": {\n                \"percentages\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"verify\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            }\n          },\n          {\n            \"targetId\": \"string\",\n            \"profiles\": [\n              \"string\",\n              \"string\"\n            ],\n            \"strategy\": {\n              \"standard\": {\n                \"verify\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              },\n              \"canary\": {\n                \"percentages\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"verify\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            }\n          }\n        ]\n      },\n      \"condition\": {\n        \"pipelineReadyCondition\": {\n          \"status\": true\n        },\n        \"targetsPresentCondition\": {\n          \"status\": false,\n          \"missingTargets\": [\n            \"string\",\n            \"string\"\n          ]\n        }\n      },\n      \"createTime\": \"2023-11-17T13:06:06.634Z\",\n      \"updateTime\": \"1975-07-17T14:22:35.130Z\"\n    },\n    {\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"annotations\": {\n        \"key_0\": \"string\"\n      },\n      \"labels\": {\n        \"key_0\": \"string\"\n      },\n      \"serialPipeline\": {\n        \"stages\": [\n          {\n            \"targetId\": \"string\",\n            \"profiles\": [\n              \"string\",\n              \"string\"\n            ],\n            \"strategy\": {\n              \"standard\": {\n                \"verify\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              },\n              \"canary\": {\n                \"percentages\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"verify\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            }\n          },\n          {\n            \"targetId\": \"string\",\n            \"profiles\": [\n              \"string\",\n              \"string\"\n            ],\n            \"strategy\": {\n              \"standard\": {\n                \"verify\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              },\n              \"canary\": {\n                \"percentages\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"verify\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            }\n          }\n        ]\n      },\n      \"condition\": {\n        \"pipelineReadyCondition\": {\n          \"status\": true\n        },\n        \"targetsPresentCondition\": {\n          \"status\": true,\n          \"missingTargets\": [\n            \"string\",\n            \"string\"\n          ]\n        }\n      },\n      \"createTime\": \"2002-03-04T15:01:24.332Z\",\n      \"updateTime\": \"1952-12-20T07:34:29.350Z\"\n    }\n  ],\n  \"nextPageToken\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5a2d952b-8470-49bf-9d4c-cf149b34d77d",
+          "name": "Google Cloud Deploy Create a delivery pipeline",
+          "request": {
+            "name": "Google Cloud Deploy Create a delivery pipeline",
+            "description": {
+              "content": "Creates a new delivery pipeline.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "projects",
+                ":projectId",
+                "locations",
+                ":location",
+                "deliveryPipelines"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "deliveryPipelineId",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "projectId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "location",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"annotations\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  },\n  \"labels\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  },\n  \"serialPipeline\": {\n    \"stages\": [\n      {\n        \"targetId\": \"<string>\",\n        \"profiles\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"strategy\": {\n          \"standard\": {\n            \"verify\": \"<boolean>\"\n          },\n          \"canary\": {\n            \"percentages\": [\n              \"<integer>\",\n              \"<integer>\"\n            ],\n            \"verify\": \"<boolean>\"\n          }\n        }\n      },\n      {\n        \"targetId\": \"<string>\",\n        \"profiles\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"strategy\": {\n          \"standard\": {\n            \"verify\": \"<boolean>\"\n          },\n          \"canary\": {\n            \"percentages\": [\n              \"<integer>\",\n              \"<integer>\"\n            ],\n            \"verify\": \"<boolean>\"\n          }\n        }\n      }\n    ]\n  },\n  \"condition\": {\n    \"pipelineReadyCondition\": {\n      \"status\": \"<boolean>\"\n    },\n    \"targetsPresentCondition\": {\n      \"status\": \"<boolean>\",\n      \"missingTargets\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  },\n  \"createTime\": \"<dateTime>\",\n  \"updateTime\": \"<dateTime>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3cdcb86e-26ff-4423-8922-fcb7e9255b9a",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectId",
+                    "locations",
+                    ":location",
+                    "deliveryPipelines"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "deliveryPipelineId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "location",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"annotations\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\"\n  },\n  \"labels\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  },\n  \"serialPipeline\": {\n    \"stages\": [\n      {\n        \"targetId\": \"string\",\n        \"profiles\": [\n          \"string\",\n          \"string\"\n        ],\n        \"strategy\": {\n          \"standard\": {\n            \"verify\": false\n          },\n          \"canary\": {\n            \"percentages\": [\n              5122,\n              6545\n            ],\n            \"verify\": false\n          }\n        }\n      },\n      {\n        \"targetId\": \"string\",\n        \"profiles\": [\n          \"string\",\n          \"string\"\n        ],\n        \"strategy\": {\n          \"standard\": {\n            \"verify\": true\n          },\n          \"canary\": {\n            \"percentages\": [\n              1650,\n              6618\n            ],\n            \"verify\": false\n          }\n        }\n      }\n    ]\n  },\n  \"condition\": {\n    \"pipelineReadyCondition\": {\n      \"status\": \"<boolean>\"\n    },\n    \"targetsPresentCondition\": {\n      \"status\": \"<boolean>\",\n      \"missingTargets\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  },\n  \"createTime\": \"<dateTime>\",\n  \"updateTime\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"done\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "750ba7b8-fd0c-4c2d-90be-e129c68cb5cf",
+          "name": "Google Cloud Deploy Get a delivery pipeline",
+          "request": {
+            "name": "Google Cloud Deploy Get a delivery pipeline",
+            "description": {
+              "content": "Gets details of a single delivery pipeline.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "projects",
+                ":projectId",
+                "locations",
+                ":location",
+                "deliveryPipelines",
+                ":pipelineId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "projectId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "location",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "pipelineId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d748e87a-0485-4cb9-a076-c1133a1e3b1a",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectId",
+                    "locations",
+                    ":location",
+                    "deliveryPipelines",
+                    ":pipelineId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "location",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pipelineId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"annotations\": {\n    \"key_0\": \"string\",\n    \"key_1\": \"string\",\n    \"key_2\": \"string\",\n    \"key_3\": \"string\"\n  },\n  \"labels\": {\n    \"key_0\": \"string\"\n  },\n  \"serialPipeline\": {\n    \"stages\": [\n      {\n        \"targetId\": \"string\",\n        \"profiles\": [\n          \"string\",\n          \"string\"\n        ],\n        \"strategy\": {\n          \"standard\": {\n            \"verify\": false\n          },\n          \"canary\": {\n            \"percentages\": [\n              445,\n              9304\n            ],\n            \"verify\": false\n          }\n        }\n      },\n      {\n        \"targetId\": \"string\",\n        \"profiles\": [\n          \"string\",\n          \"string\"\n        ],\n        \"strategy\": {\n          \"standard\": {\n            \"verify\": true\n          },\n          \"canary\": {\n            \"percentages\": [\n              1673,\n              9453\n            ],\n            \"verify\": false\n          }\n        }\n      }\n    ]\n  },\n  \"condition\": {\n    \"pipelineReadyCondition\": {\n      \"status\": false\n    },\n    \"targetsPresentCondition\": {\n      \"status\": true,\n      \"missingTargets\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  },\n  \"createTime\": \"1951-02-18T18:53:04.816Z\",\n  \"updateTime\": \"2019-04-18T06:22:49.984Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6a41aeff-1e51-4fa2-8f22-8e106855d7c9",
+          "name": "Google Cloud Deploy Update a delivery pipeline",
+          "request": {
+            "name": "Google Cloud Deploy Update a delivery pipeline",
+            "description": {
+              "content": "Updates the parameters of a single delivery pipeline.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "projects",
+                ":projectId",
+                "locations",
+                ":location",
+                "deliveryPipelines",
+                ":pipelineId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "updateMask",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "projectId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "location",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "pipelineId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"annotations\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  },\n  \"labels\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  },\n  \"serialPipeline\": {\n    \"stages\": [\n      {\n        \"targetId\": \"<string>\",\n        \"profiles\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"strategy\": {\n          \"standard\": {\n            \"verify\": \"<boolean>\"\n          },\n          \"canary\": {\n            \"percentages\": [\n              \"<integer>\",\n              \"<integer>\"\n            ],\n            \"verify\": \"<boolean>\"\n          }\n        }\n      },\n      {\n        \"targetId\": \"<string>\",\n        \"profiles\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"strategy\": {\n          \"standard\": {\n            \"verify\": \"<boolean>\"\n          },\n          \"canary\": {\n            \"percentages\": [\n              \"<integer>\",\n              \"<integer>\"\n            ],\n            \"verify\": \"<boolean>\"\n          }\n        }\n      }\n    ]\n  },\n  \"condition\": {\n    \"pipelineReadyCondition\": {\n      \"status\": \"<boolean>\"\n    },\n    \"targetsPresentCondition\": {\n      \"status\": \"<boolean>\",\n      \"missingTargets\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  },\n  \"createTime\": \"<dateTime>\",\n  \"updateTime\": \"<dateTime>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0855e8f0-a861-4bb5-9cba-bfdcfd79edf9",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectId",
+                    "locations",
+                    ":location",
+                    "deliveryPipelines",
+                    ":pipelineId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "updateMask",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "location",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pipelineId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"annotations\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\"\n  },\n  \"labels\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  },\n  \"serialPipeline\": {\n    \"stages\": [\n      {\n        \"targetId\": \"string\",\n        \"profiles\": [\n          \"string\",\n          \"string\"\n        ],\n        \"strategy\": {\n          \"standard\": {\n            \"verify\": false\n          },\n          \"canary\": {\n            \"percentages\": [\n              5122,\n              6545\n            ],\n            \"verify\": false\n          }\n        }\n      },\n      {\n        \"targetId\": \"string\",\n        \"profiles\": [\n          \"string\",\n          \"string\"\n        ],\n        \"strategy\": {\n          \"standard\": {\n            \"verify\": true\n          },\n          \"canary\": {\n            \"percentages\": [\n              1650,\n              6618\n            ],\n            \"verify\": false\n          }\n        }\n      }\n    ]\n  },\n  \"condition\": {\n    \"pipelineReadyCondition\": {\n      \"status\": \"<boolean>\"\n    },\n    \"targetsPresentCondition\": {\n      \"status\": \"<boolean>\",\n      \"missingTargets\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  },\n  \"createTime\": \"<dateTime>\",\n  \"updateTime\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"done\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "48b77418-d8a9-460d-90d3-3e0f04a32ae2",
+          "name": "Google Cloud Deploy Delete a delivery pipeline",
+          "request": {
+            "name": "Google Cloud Deploy Delete a delivery pipeline",
+            "description": {
+              "content": "Deletes a single delivery pipeline.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "projects",
+                ":projectId",
+                "locations",
+                ":location",
+                "deliveryPipelines",
+                ":pipelineId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "projectId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "location",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "pipelineId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "524e8362-d41d-4720-a3aa-2ce3d494dc35",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectId",
+                    "locations",
+                    ":location",
+                    "deliveryPipelines",
+                    ":pipelineId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "location",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "pipelineId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"done\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://clouddeploy.googleapis.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "https://www.googleapis.com/auth/cloud-platform"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://oauth2.googleapis.com/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://accounts.google.com/o/oauth2/auth"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "c4aadf47-fb17-4868-9ba7-8a606fa54e24",
+    "name": "Google Cloud Deploy DeliveryPipelines API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Cloud Deploy API provides programmatic access to manage delivery pipelines, targets, releases, and rollouts for continuous delivery workflows on Google Cloud. It supports promoting releases through target environments with approval gates and rollback capabilities.\n\nContact Support:\n Name: Google Cloud Support",
+      "type": "text/plain"
+    }
+  }
+}
