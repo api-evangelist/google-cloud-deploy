@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Google Cloud Deploy DeliveryPipelines API
+  title: Google Cloud Deploy Delivery Pipelines API
   description: The Cloud Deploy API provides programmatic access to manage delivery pipelines, targets, releases, and rollouts for continuous delivery workflows on Google Cloud. It supports promoting releases through target environments with approval gates and rollback capabilities.
   version: v1
   contact:
@@ -126,14 +126,14 @@ paths:
                 $ref: '#/components/schemas/Operation'
 components:
   parameters:
-    location:
-      name: location
+    pipelineId:
+      name: pipelineId
       in: path
       required: true
       schema:
         type: string
-    pipelineId:
-      name: pipelineId
+    projectId:
+      name: projectId
       in: path
       required: true
       schema:
@@ -148,57 +148,13 @@ components:
       in: query
       schema:
         type: integer
-    projectId:
-      name: projectId
+    location:
+      name: location
       in: path
       required: true
       schema:
         type: string
   schemas:
-    Operation:
-      type: object
-      properties:
-        name:
-          type: string
-        done:
-          type: boolean
-    ListDeliveryPipelinesResponse:
-      type: object
-      properties:
-        deliveryPipelines:
-          type: array
-          items:
-            $ref: '#/components/schemas/DeliveryPipeline'
-        nextPageToken:
-          type: string
-    Stage:
-      type: object
-      properties:
-        targetId:
-          type: string
-          description: The target ID for this stage
-        profiles:
-          type: array
-          items:
-            type: string
-          description: Skaffold profiles to use during rendering
-        strategy:
-          type: object
-          properties:
-            standard:
-              type: object
-              properties:
-                verify:
-                  type: boolean
-            canary:
-              type: object
-              properties:
-                percentages:
-                  type: array
-                  items:
-                    type: integer
-                verify:
-                  type: boolean
     DeliveryPipeline:
       type: object
       properties:
@@ -246,6 +202,50 @@ components:
         updateTime:
           type: string
           format: date-time
+    Operation:
+      type: object
+      properties:
+        name:
+          type: string
+        done:
+          type: boolean
+    Stage:
+      type: object
+      properties:
+        targetId:
+          type: string
+          description: The target ID for this stage
+        profiles:
+          type: array
+          items:
+            type: string
+          description: Skaffold profiles to use during rendering
+        strategy:
+          type: object
+          properties:
+            standard:
+              type: object
+              properties:
+                verify:
+                  type: boolean
+            canary:
+              type: object
+              properties:
+                percentages:
+                  type: array
+                  items:
+                    type: integer
+                verify:
+                  type: boolean
+    ListDeliveryPipelinesResponse:
+      type: object
+      properties:
+        deliveryPipelines:
+          type: array
+          items:
+            $ref: '#/components/schemas/DeliveryPipeline'
+        nextPageToken:
+          type: string
   securitySchemes:
     oauth2:
       type: oauth2
