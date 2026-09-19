@@ -41,6 +41,13 @@ tags:
   - Deployment
   - DevOps
   - Kubernetes
+  - Pipelines
+  - Release Management
+tags_raw:
+  - Continuous Delivery
+  - Deployment
+  - DevOps
+  - Kubernetes
   - Pipeline
   - Release Management
 apis:
