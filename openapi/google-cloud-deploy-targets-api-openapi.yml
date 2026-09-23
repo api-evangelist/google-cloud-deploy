@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Google Cloud Deploy DeliveryPipelines Targets API
+  title: Google Cloud Deploy Targets API
   description: The Cloud Deploy API provides programmatic access to manage delivery pipelines, targets, releases, and rollouts for continuous delivery workflows on Google Cloud. It supports promoting releases through target environments with approval gates and rollback capabilities.
   version: v1
   contact:
@@ -64,29 +64,45 @@ paths:
                 $ref: '#/components/schemas/Operation'
 components:
   parameters:
-    projectId:
-      name: projectId
-      in: path
-      required: true
-      schema:
-        type: string
-    pageToken:
-      name: pageToken
-      in: query
-      schema:
-        type: string
     pageSize:
       name: pageSize
       in: query
       schema:
         type: integer
+    pageToken:
+      name: pageToken
+      in: query
+      schema:
+        type: string
     location:
       name: location
       in: path
       required: true
       schema:
         type: string
+    projectId:
+      name: projectId
+      in: path
+      required: true
+      schema:
+        type: string
   schemas:
+    Operation:
+      type: object
+      properties:
+        name:
+          type: string
+        done:
+          type: boolean
+    ListTargetsResponse:
+      type: object
+      properties:
+        targets:
+          type: array
+          items:
+            $ref: '#/components/schemas/Target'
+        nextPageToken:
+          type: string
     Target:
       type: object
       properties:
@@ -127,22 +143,6 @@ components:
         updateTime:
           type: string
           format: date-time
-    Operation:
-      type: object
-      properties:
-        name:
-          type: string
-        done:
-          type: boolean
-    ListTargetsResponse:
-      type: object
-      properties:
-        targets:
-          type: array
-          items:
-            $ref: '#/components/schemas/Target'
-        nextPageToken:
-          type: string
   securitySchemes:
     oauth2:
       type: oauth2

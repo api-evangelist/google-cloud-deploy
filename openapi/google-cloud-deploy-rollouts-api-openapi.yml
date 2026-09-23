@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Google Cloud Deploy DeliveryPipelines Rollouts API
+  title: Google Cloud Deploy Rollouts API
   description: The Cloud Deploy API provides programmatic access to manage delivery pipelines, targets, releases, and rollouts for continuous delivery workflows on Google Cloud. It supports promoting releases through target environments with approval gates and rollback capabilities.
   version: v1
   contact:
@@ -97,12 +97,11 @@ paths:
           description: Successful response
 components:
   parameters:
-    projectId:
-      name: projectId
-      in: path
-      required: true
+    pageSize:
+      name: pageSize
+      in: query
       schema:
-        type: string
+        type: integer
     releaseId:
       name: releaseId
       in: path
@@ -114,11 +113,12 @@ components:
       in: query
       schema:
         type: string
-    pageSize:
-      name: pageSize
-      in: query
+    projectId:
+      name: projectId
+      in: path
+      required: true
       schema:
-        type: integer
+        type: string
     pipelineId:
       name: pipelineId
       in: path
@@ -132,6 +132,13 @@ components:
       schema:
         type: string
   schemas:
+    Operation:
+      type: object
+      properties:
+        name:
+          type: string
+        done:
+          type: boolean
     Rollout:
       type: object
       properties:
@@ -170,13 +177,6 @@ components:
         createTime:
           type: string
           format: date-time
-    Operation:
-      type: object
-      properties:
-        name:
-          type: string
-        done:
-          type: boolean
     ListRolloutsResponse:
       type: object
       properties:
