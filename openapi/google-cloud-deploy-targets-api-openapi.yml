@@ -64,6 +64,12 @@ paths:
                 $ref: '#/components/schemas/Operation'
 components:
   parameters:
+    location:
+      name: location
+      in: path
+      required: true
+      schema:
+        type: string
     pageSize:
       name: pageSize
       in: query
@@ -72,12 +78,6 @@ components:
     pageToken:
       name: pageToken
       in: query
-      schema:
-        type: string
-    location:
-      name: location
-      in: path
-      required: true
       schema:
         type: string
     projectId:

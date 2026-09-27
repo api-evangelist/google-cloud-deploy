@@ -43,6 +43,7 @@ tags:
   - Kubernetes
   - Pipelines
   - Release Management
+  - CI/CD
 tags_raw:
   - Continuous Delivery
   - Deployment
@@ -50,6 +51,7 @@ tags_raw:
   - Kubernetes
   - Pipeline
   - Release Management
+  - CI/CD
 apis:
 - aid: google-cloud-deploy:google-cloud-deploy-deliverypipelines-api
   name: Google Cloud Deploy DeliveryPipelines API

@@ -97,17 +97,29 @@ paths:
           description: Successful response
 components:
   parameters:
-    pageSize:
-      name: pageSize
-      in: query
+    location:
+      name: location
+      in: path
+      required: true
       schema:
-        type: integer
+        type: string
+    pipelineId:
+      name: pipelineId
+      in: path
+      required: true
+      schema:
+        type: string
     releaseId:
       name: releaseId
       in: path
       required: true
       schema:
         type: string
+    pageSize:
+      name: pageSize
+      in: query
+      schema:
+        type: integer
     pageToken:
       name: pageToken
       in: query
@@ -119,26 +131,7 @@ components:
       required: true
       schema:
         type: string
-    pipelineId:
-      name: pipelineId
-      in: path
-      required: true
-      schema:
-        type: string
-    location:
-      name: location
-      in: path
-      required: true
-      schema:
-        type: string
   schemas:
-    Operation:
-      type: object
-      properties:
-        name:
-          type: string
-        done:
-          type: boolean
     Rollout:
       type: object
       properties:
@@ -177,6 +170,13 @@ components:
         createTime:
           type: string
           format: date-time
+    Operation:
+      type: object
+      properties:
+        name:
+          type: string
+        done:
+          type: boolean
     ListRolloutsResponse:
       type: object
       properties:

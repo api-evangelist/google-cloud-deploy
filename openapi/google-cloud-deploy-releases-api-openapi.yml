@@ -65,36 +65,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/Operation'
 components:
-  parameters:
-    pageSize:
-      name: pageSize
-      in: query
-      schema:
-        type: integer
-    pageToken:
-      name: pageToken
-      in: query
-      schema:
-        type: string
-    pipelineId:
-      name: pipelineId
-      in: path
-      required: true
-      schema:
-        type: string
-    location:
-      name: location
-      in: path
-      required: true
-      schema:
-        type: string
-    projectId:
-      name: projectId
-      in: path
-      required: true
-      schema:
-        type: string
   schemas:
+    ListReleasesResponse:
+      type: object
+      properties:
+        releases:
+          type: array
+          items:
+            $ref: '#/components/schemas/Release'
+        nextPageToken:
+          type: string
     Operation:
       type: object
       properties:
@@ -141,15 +121,35 @@ components:
         createTime:
           type: string
           format: date-time
-    ListReleasesResponse:
-      type: object
-      properties:
-        releases:
-          type: array
-          items:
-            $ref: '#/components/schemas/Release'
-        nextPageToken:
-          type: string
+  parameters:
+    pipelineId:
+      name: pipelineId
+      in: path
+      required: true
+      schema:
+        type: string
+    location:
+      name: location
+      in: path
+      required: true
+      schema:
+        type: string
+    pageSize:
+      name: pageSize
+      in: query
+      schema:
+        type: integer
+    pageToken:
+      name: pageToken
+      in: query
+      schema:
+        type: string
+    projectId:
+      name: projectId
+      in: path
+      required: true
+      schema:
+        type: string
   securitySchemes:
     oauth2:
       type: oauth2

@@ -126,6 +126,18 @@ paths:
                 $ref: '#/components/schemas/Operation'
 components:
   parameters:
+    location:
+      name: location
+      in: path
+      required: true
+      schema:
+        type: string
+    pipelineId:
+      name: pipelineId
+      in: path
+      required: true
+      schema:
+        type: string
     pageSize:
       name: pageSize
       in: query
@@ -136,18 +148,6 @@ components:
       in: query
       schema:
         type: string
-    pipelineId:
-      name: pipelineId
-      in: path
-      required: true
-      schema:
-        type: string
-    location:
-      name: location
-      in: path
-      required: true
-      schema:
-        type: string
     projectId:
       name: projectId
       in: path
@@ -155,50 +155,6 @@ components:
       schema:
         type: string
   schemas:
-    Operation:
-      type: object
-      properties:
-        name:
-          type: string
-        done:
-          type: boolean
-    Stage:
-      type: object
-      properties:
-        targetId:
-          type: string
-          description: The target ID for this stage
-        profiles:
-          type: array
-          items:
-            type: string
-          description: Skaffold profiles to use during rendering
-        strategy:
-          type: object
-          properties:
-            standard:
-              type: object
-              properties:
-                verify:
-                  type: boolean
-            canary:
-              type: object
-              properties:
-                percentages:
-                  type: array
-                  items:
-                    type: integer
-                verify:
-                  type: boolean
-    ListDeliveryPipelinesResponse:
-      type: object
-      properties:
-        deliveryPipelines:
-          type: array
-          items:
-            $ref: '#/components/schemas/DeliveryPipeline'
-        nextPageToken:
-          type: string
     DeliveryPipeline:
       type: object
       properties:
@@ -246,6 +202,50 @@ components:
         updateTime:
           type: string
           format: date-time
+    Operation:
+      type: object
+      properties:
+        name:
+          type: string
+        done:
+          type: boolean
+    Stage:
+      type: object
+      properties:
+        targetId:
+          type: string
+          description: The target ID for this stage
+        profiles:
+          type: array
+          items:
+            type: string
+          description: Skaffold profiles to use during rendering
+        strategy:
+          type: object
+          properties:
+            standard:
+              type: object
+              properties:
+                verify:
+                  type: boolean
+            canary:
+              type: object
+              properties:
+                percentages:
+                  type: array
+                  items:
+                    type: integer
+                verify:
+                  type: boolean
+    ListDeliveryPipelinesResponse:
+      type: object
+      properties:
+        deliveryPipelines:
+          type: array
+          items:
+            $ref: '#/components/schemas/DeliveryPipeline'
+        nextPageToken:
+          type: string
   securitySchemes:
     oauth2:
       type: oauth2
