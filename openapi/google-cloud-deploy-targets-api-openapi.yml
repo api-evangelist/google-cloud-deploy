@@ -63,37 +63,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Operation'
 components:
-  parameters:
-    location:
-      name: location
-      in: path
-      required: true
-      schema:
-        type: string
-    pageSize:
-      name: pageSize
-      in: query
-      schema:
-        type: integer
-    pageToken:
-      name: pageToken
-      in: query
-      schema:
-        type: string
-    projectId:
-      name: projectId
-      in: path
-      required: true
-      schema:
-        type: string
   schemas:
-    Operation:
-      type: object
-      properties:
-        name:
-          type: string
-        done:
-          type: boolean
     ListTargetsResponse:
       type: object
       properties:
@@ -103,6 +73,13 @@ components:
             $ref: '#/components/schemas/Target'
         nextPageToken:
           type: string
+    Operation:
+      type: object
+      properties:
+        name:
+          type: string
+        done:
+          type: boolean
     Target:
       type: object
       properties:
@@ -143,6 +120,29 @@ components:
         updateTime:
           type: string
           format: date-time
+  parameters:
+    location:
+      name: location
+      in: path
+      required: true
+      schema:
+        type: string
+    pageToken:
+      name: pageToken
+      in: query
+      schema:
+        type: string
+    pageSize:
+      name: pageSize
+      in: query
+      schema:
+        type: integer
+    projectId:
+      name: projectId
+      in: path
+      required: true
+      schema:
+        type: string
   securitySchemes:
     oauth2:
       type: oauth2

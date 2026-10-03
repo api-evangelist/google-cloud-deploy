@@ -103,16 +103,21 @@ components:
       required: true
       schema:
         type: string
+    releaseId:
+      name: releaseId
+      in: path
+      required: true
+      schema:
+        type: string
     pipelineId:
       name: pipelineId
       in: path
       required: true
       schema:
         type: string
-    releaseId:
-      name: releaseId
-      in: path
-      required: true
+    pageToken:
+      name: pageToken
+      in: query
       schema:
         type: string
     pageSize:
@@ -120,11 +125,6 @@ components:
       in: query
       schema:
         type: integer
-    pageToken:
-      name: pageToken
-      in: query
-      schema:
-        type: string
     projectId:
       name: projectId
       in: path
@@ -132,6 +132,22 @@ components:
       schema:
         type: string
   schemas:
+    ListRolloutsResponse:
+      type: object
+      properties:
+        rollouts:
+          type: array
+          items:
+            $ref: '#/components/schemas/Rollout'
+        nextPageToken:
+          type: string
+    Operation:
+      type: object
+      properties:
+        name:
+          type: string
+        done:
+          type: boolean
     Rollout:
       type: object
       properties:
@@ -170,22 +186,6 @@ components:
         createTime:
           type: string
           format: date-time
-    Operation:
-      type: object
-      properties:
-        name:
-          type: string
-        done:
-          type: boolean
-    ListRolloutsResponse:
-      type: object
-      properties:
-        rollouts:
-          type: array
-          items:
-            $ref: '#/components/schemas/Rollout'
-        nextPageToken:
-          type: string
   securitySchemes:
     oauth2:
       type: oauth2
