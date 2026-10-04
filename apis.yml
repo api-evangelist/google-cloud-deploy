@@ -118,6 +118,9 @@ apis:
   - type: JSONSchema
     url: json-schema/google-cloud-deploy-release-schema.json
 common:
+  - type: CapabilityMap
+    url: capabilities/google-cloud-deploy-capability-edges.yml
+    name: Google Cloud Deploy Business Capability Map
   - type: Website
     url: https://www.google.com/
   - type: PostmanWorkspace

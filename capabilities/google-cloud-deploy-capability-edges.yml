@@ -1,0 +1,53 @@
+slug: google-cloud-deploy
+provider: Google Cloud Deploy
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 4
+edges:
+- tag: Rollouts
+  spec_file: google-cloud-deploy-rollouts-api-openapi.yml
+  capability_id: BC-4210.40
+  capability_id_l1: BC-4210
+  capability_name: Deployment Orchestration
+  confidence: 0.85
+  evidence: '''Create a rollout'', ''Approve a rollout'' with schema ''Rollout'''
+  reason: Rollouts delivering a release to a target environment with approval gates is squarely deployment
+    orchestration (with production change authorisation overtones).
+- tag: DeliveryPipelines
+  spec_file: google-cloud-deploy-deliverypipelines-api-openapi.yml
+  capability_id: BC-4210.40
+  capability_id_l1: BC-4210
+  capability_name: Deployment Orchestration
+  confidence: 0.8
+  evidence: '''Create a delivery pipeline''; ''managed continuous delivery service that automates the
+    deployment of applications to Google Cloud target environments'''
+  reason: Delivery pipeline definitions that promote releases through target environments are deployment
+    orchestration within software release & deployment management.
+- tag: Releases
+  spec_file: google-cloud-deploy-releases-api-openapi.yml
+  capability_id: BC-4210.30
+  capability_id_l1: BC-4210
+  capability_name: Release Engineering Management
+  confidence: 0.78
+  evidence: '''Create a release'' under /deliveryPipelines/{pipelineId}/releases'
+  reason: Creating and listing releases within a continuous delivery pipeline is release engineering;
+    could also be read as deployment orchestration, hence not higher.
+- tag: Targets
+  spec_file: google-cloud-deploy-targets-api-openapi.yml
+  capability_id: BC-4210.20
+  capability_id_l1: BC-4210
+  capability_name: Environment Management
+  confidence: 0.7
+  evidence: '''Create a target''; vendor: ''deployment of applications to Google Cloud target environments
+    such as GKE, Cloud Run, and Anthos'''
+  reason: Targets represent deployment environments registered for the pipeline, closest to environment
+    management; some ambiguity with deployment orchestration.
