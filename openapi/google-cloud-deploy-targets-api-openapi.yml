@@ -64,22 +64,6 @@ paths:
                 $ref: '#/components/schemas/Operation'
 components:
   schemas:
-    ListTargetsResponse:
-      type: object
-      properties:
-        targets:
-          type: array
-          items:
-            $ref: '#/components/schemas/Target'
-        nextPageToken:
-          type: string
-    Operation:
-      type: object
-      properties:
-        name:
-          type: string
-        done:
-          type: boolean
     Target:
       type: object
       properties:
@@ -120,9 +104,25 @@ components:
         updateTime:
           type: string
           format: date-time
+    ListTargetsResponse:
+      type: object
+      properties:
+        targets:
+          type: array
+          items:
+            $ref: '#/components/schemas/Target'
+        nextPageToken:
+          type: string
+    Operation:
+      type: object
+      properties:
+        name:
+          type: string
+        done:
+          type: boolean
   parameters:
-    location:
-      name: location
+    projectId:
+      name: projectId
       in: path
       required: true
       schema:
@@ -137,8 +137,8 @@ components:
       in: query
       schema:
         type: integer
-    projectId:
-      name: projectId
+    location:
+      name: location
       in: path
       required: true
       schema:

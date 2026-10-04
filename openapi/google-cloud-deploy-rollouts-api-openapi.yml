@@ -97,14 +97,14 @@ paths:
           description: Successful response
 components:
   parameters:
-    location:
-      name: location
+    releaseId:
+      name: releaseId
       in: path
       required: true
       schema:
         type: string
-    releaseId:
-      name: releaseId
+    projectId:
+      name: projectId
       in: path
       required: true
       schema:
@@ -115,23 +115,30 @@ components:
       required: true
       schema:
         type: string
-    pageToken:
-      name: pageToken
-      in: query
-      schema:
-        type: string
     pageSize:
       name: pageSize
       in: query
       schema:
         type: integer
-    projectId:
-      name: projectId
+    pageToken:
+      name: pageToken
+      in: query
+      schema:
+        type: string
+    location:
+      name: location
       in: path
       required: true
       schema:
         type: string
   schemas:
+    Operation:
+      type: object
+      properties:
+        name:
+          type: string
+        done:
+          type: boolean
     ListRolloutsResponse:
       type: object
       properties:
@@ -141,13 +148,6 @@ components:
             $ref: '#/components/schemas/Rollout'
         nextPageToken:
           type: string
-    Operation:
-      type: object
-      properties:
-        name:
-          type: string
-        done:
-          type: boolean
     Rollout:
       type: object
       properties:
