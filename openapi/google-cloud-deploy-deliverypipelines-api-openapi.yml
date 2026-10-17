@@ -126,34 +126,6 @@ paths:
                 $ref: '#/components/schemas/Operation'
 components:
   schemas:
-    Stage:
-      type: object
-      properties:
-        targetId:
-          type: string
-          description: The target ID for this stage
-        profiles:
-          type: array
-          items:
-            type: string
-          description: Skaffold profiles to use during rendering
-        strategy:
-          type: object
-          properties:
-            standard:
-              type: object
-              properties:
-                verify:
-                  type: boolean
-            canary:
-              type: object
-              properties:
-                percentages:
-                  type: array
-                  items:
-                    type: integer
-                verify:
-                  type: boolean
     Operation:
       type: object
       properties:
@@ -208,6 +180,34 @@ components:
         updateTime:
           type: string
           format: date-time
+    Stage:
+      type: object
+      properties:
+        targetId:
+          type: string
+          description: The target ID for this stage
+        profiles:
+          type: array
+          items:
+            type: string
+          description: Skaffold profiles to use during rendering
+        strategy:
+          type: object
+          properties:
+            standard:
+              type: object
+              properties:
+                verify:
+                  type: boolean
+            canary:
+              type: object
+              properties:
+                percentages:
+                  type: array
+                  items:
+                    type: integer
+                verify:
+                  type: boolean
     ListDeliveryPipelinesResponse:
       type: object
       properties:
@@ -218,14 +218,14 @@ components:
         nextPageToken:
           type: string
   parameters:
-    projectId:
-      name: projectId
+    pipelineId:
+      name: pipelineId
       in: path
       required: true
       schema:
         type: string
-    pipelineId:
-      name: pipelineId
+    projectId:
+      name: projectId
       in: path
       required: true
       schema:
@@ -235,17 +235,17 @@ components:
       in: query
       schema:
         type: string
-    pageSize:
-      name: pageSize
-      in: query
-      schema:
-        type: integer
     location:
       name: location
       in: path
       required: true
       schema:
         type: string
+    pageSize:
+      name: pageSize
+      in: query
+      schema:
+        type: integer
   securitySchemes:
     oauth2:
       type: oauth2
